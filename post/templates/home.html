@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+
+{% load custom_filters %}
+<form method="GET" action="{% url 'home' %}" class="filter-form">
+    <div class="filter-bar">
+        {% for tag in tags.all %}
+        <div class="filter-option">
+            <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
+                class="filter-input" 
+                {% if request.GET.filter|is_checked:tag.id %}checked{% endif %}>
+            <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <button type="submit" class="n-button">Найти</button>
+    </div>
+</form>
+
+<div class="container">
+
+      
+        <div class="row">
+     
+            <div class="listing-grid">
+                  {% for post in posts %}
+        <a href="{% url 'post_detail' post.id %}" class="listing">
+            <img src="{{ post.picture }}" alt="Room">
+            <div class="details">
+            {% for tag in post.tags.all %}
+                                   {{ tag.name }} |
+            {% endfor %}
+            </div>
+            
+            <div class="price">
+                <div class="old-price">8000сом</div>
+               <div>{{ post.price }} сом</div>
+             </div>
+             
+                 
+                 </a>
+           
+               {% endfor %}
+               
+               <style>
+               .n-button{
+               all:unset;
+               background:#ffd646;
+               display:flex;
+               padding:5px 10px;
+               align-items:center;
+               justify-content:center;
+               font-size:16px;
+               border-radius:8px;
+               margin:10px;
+               }
+               </style>
+                   
+                    
+
+             
+               </div>        
+                                   
+    </div>
+    
+                        {% for post in posts %}
+    <!-- Your post display logic here -->
+{% endfor %}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}" aria-label="Previous">
+                    <span style="opacity:0.7" class="n-button" aria-hidden="true">&laquo; Предыдущие</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}" aria-label="Next">
+                    <span class="n-button" aria-hidden="true">Следующие &raquo;</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

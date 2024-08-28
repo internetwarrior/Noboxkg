@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nobox{% endblock %}</title>
+<!-- Latest compiled and minified CSS -->
+
+
+<!-- Optional theme -->
+
+</head>
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <main class="">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+<style>
+footer{
+margin-top:100px;
+display: flex;
+width:100%
+justify-content:center;
+align-items:center;
+
+}
+
+</style>
+
+
+    
+    
+<a style="" href="https://t.me/a1ina_bot" class="publish">
+<div>+</div>
+</a>
+
+ 
+<!-- Latest compiled and minified JavaScript -->
+<footer class="bg-light text-center py-3 mt-4">
+
+    <div class="">
+        {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+        {% else %}
+            <a class="" href="{% url 'register' %}">Регистрация</a>
+            <a class="" href="{% url 'login' %}"></a>
+        <a class="" href="{% url 'login' %}">Войти</a>
+       
+        {% endif %}
+         <p>&copy; 2024 Nobox.kg</p>
+    </footer>
+    
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+outline: 0.1px solid limegreen;
+}
+
+a{
+all:unset;}
+
+
+               
+:root {
+  --background-color: #f2f2f2;
+  --white: #fff;
+  --gray-light: #ddd;
+  --gray-dark: #666;
+  --gray-darker: #888;
+  --gold: #ffd700;
+  --gold-hover: #ffc700;
+  --border-color: #ccc;
+  --link-color: #007bff;
+}
+
+main{
+padding-top:64px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--background-color);
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wrapper{
+  display: flex;
+  
+}
+
+.publish{
+all:unset;
+color:white;
+padding:4px;
+position:fixed;
+bottom:24px;
+right:24px;
+z-index:9999;
+border-radius:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+height:56px;
+width:56px;
+background:#ffd646;
+box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.publish div{
+all:unset;
+font-size:64px;
+line-height:0;
+}
+
+.search-bar {
+position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  padding: 10px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.n-button{
+               all:unset;
+               background:#ffd646;
+               display:flex;
+               padding:5px 10px;
+               align-items:center;
+               justify-content:center;
+               font-size:16px;
+               border-radius:8px;
+               margin:10px;
+               }
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  background-color: #ECECEC;
+}
+
+.search-bar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+ .filter-bar label {
+  all:unset;
+  outline:0.5px solid gray;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2px;
+  font-size: 14px;
+  flex: 1 1 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  content:"+";
+  
+}
+.filter-bar input{
+display:none;
+}
+
+.filter-bar label::before{
+content:"+"} 
+ /* Style for the label when the associated checkbox is checked */
+input:checked + label {
+  background-color: var(--gold); /* Background color for active state */
+  color: black; /* Text color for active state */
+}
+
+/* Style for the ::before pseudo-element of the label */
+input:checked + label::before {
+  content: "-";
+  color: black; /* Text color of the ::before content */
+  background-color: var(--gold); /* Background color for the ::before pseudo-element */
+  margin-right: 5px; /* Space between the content and the label text */
+  display: inline-block; /* Ensure the pseudo-element is inline */
+  
+}
+
+
+
+
+
+
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap:10px;
+  padding:0 10px;
+}
+
+.listing {
+  width:auto;
+  padding:10px;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+.listing img {
+  width: 100%;
+  max-height:250px;
+  border-radius: 5px;
+  object-fit:cover;
+}
+
+.listing .details {
+  font-size: 24px;
+}
+
+.listing .details {
+  color: var(--gray-dark);
+}
+
+.listing .price {
+  display: flex;
+  flex-direction:column;
+  align-items: end;
+  font-size: 24px;
+}
+
+.listing .price span {
+  font-weight: bold;
+}
+
+.listing .price .old-price {
+  text-decoration: line-through;
+  color: var(--gray-darker);
+}
+
+
+
+.registration-container {
+  background-color: var(--white);
+  padding: 13px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  margin: 0 auto;
+}
+
+.registration-container img{
+  display: flex;
+}
+
+.login-img{
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.registration-container span{
+display:none;
+}
+
+.registration-container li{
+color:gray;
+font-size:12px;
+
+}
+.registration-container ul{
+padding-bottom:10px;
+
+
+}
+form input {
+  margin-bottom: 15px;
+  width:100%;
+}
+
+form input label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form  input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.submit-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  width: 50px;
+  height: 50px;
+  color: var(--white);
+  background-color: var(--gold);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--gold-hover);
+}
+
+.or-container {
+  text-align: center;
+  
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.google-btn {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--white);
+  font-size: 16px;
+}
+
+.google-btn img {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.terms {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--gray-dark);
+}
+
+.terms a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .search-bar input {
+    font-size: 14px;
+    
+  }
+
+  .search-bar img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .filter-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .filter-bar button {
+    font-size: 12px;
+    
+  }
+
+  .listing .price {
+    font-size: 24px;
+  }
+
+  .listing .details p {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .listing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .listing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="registration-container">
+        <h2>Регистрация</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <div class="text-center">
+            <div class="submit-btn-container">
+                <button type="submit" class="submit-btn">➔</button>
+        </div>
+    </form>
+
+        <div class="or-container">или</div>
+        <div class="google-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Google">
+            Скоро...
+        </div>
+        <div class="terms">
+            Нажимая на кнопку, я соглашаюсь на обработку персональных данных.
+        </div>
+        <div class="login-link">
+            У вас уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Login</h2>
+
+</div>

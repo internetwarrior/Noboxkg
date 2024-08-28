@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <div class="wrapper">
+    <div class="registration-container">
+        <div class="img">
+            <img class="login-img" src="img/login.png" alt="">
+        </div>
+        <h2>Войти в аккаунт</h2>
+
+        <form method="POST" action="{% url 'login' %}">
+          {% csrf_token %}
+            <div class="input-group">
+                <label for="phone">Login</label>
+                <input id="username" name="username" placeholder="+996 551 021-685" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Пароль" required>
+            </div>
+            <div class="submit-btn-container">
+                <button type="submit" class="submit-btn">➔</button>
+            </div>
+        </form>
+
+        <div class="or-container">или</div>
+        <div class="google-btn">
+            <img src="https://cdn-icons-png.flaticon.com/512/2702/2702602.png" alt="Google">
+            Войти через Google
+        </div>
+        <div class="terms">
+            Нажимая на кнопку, я соглашаюсь на обработку персональных данных.
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Login</h2>
+    <form method="POST">
+      
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>

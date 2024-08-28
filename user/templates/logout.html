@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+<div class="container ">
+    <h2>Вы реально хотите выйти с авторизации?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+        <button style="width:auto;" type="submit" class="n-button" >Да, выйти</button>
+        </div>
+    </form>
+    <a href="{% url 'home' %}" class="n-button">Отменить</a>
+</div>
+{% endblock %}

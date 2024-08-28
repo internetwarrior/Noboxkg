@@ -1,0 +1,25 @@
+<div class="search-bar">
+
+<style>
+.logo{
+padding-right:5px;
+color:black;
+box-sizing:0px;
+line-height:80%;
+font-weight:bold;
+font-size:16px;
+}
+.search-bar{
+z-index:1000}
+
+
+
+</style>
+       <a class ="logo" href="{% url 'home' %}"> No<br>box</a>
+      
+   {% if user.is_authenticated %}
+    <div>Привет, {{ user.username }}</div>
+{% else %}
+    <a href="{% url 'login'%}">Войти</a>
+{% endif %}
+     </div>
