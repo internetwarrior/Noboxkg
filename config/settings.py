@@ -32,10 +32,10 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ["*"]
-#CSRF_TRUSTED_ORIGINS = [
-#    'https://nobox.kg',
-#    'https://www.nobox.kg',
-#]
+CSRF_TRUSTED_ORIGINS = [
+    'https://nobox.kg',
+    'https://www.nobox.kg',
+]
 
 # Application definition
 
