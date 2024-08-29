@@ -49,7 +49,14 @@ font-size:24px;
     <div class="m-info">{{ post.price }} сом</div>
     <p><small>Особые примечания:</small> <br>{{ post.description }}</p>
     <p class="contact">
-    {{ post.author.phone_number }}</p>
+    
+        
+    {% if post.state == "active" %}
+    {{ post.author.phone_number }}
+{% else %}
+    🏚 Объявление уже в архиве...
+{% endif %}
+    </p>
 
 </div>
 {% endblock %}
