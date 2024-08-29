@@ -5,6 +5,9 @@
 {% block content %}
 
 
+
+
+
 <style>
 .more-info {
 padding:12px;
@@ -35,10 +38,31 @@ font-size:32px;
 margin-top:10px;
 font-size:24px;
 }
+
+.go-back {
+    position: fixed;
+    bottom: 30px;
+    font-size: 56px;
+    
+    animation: goUp ease 400ms forwards;
+    background:black;
+}
+
+@keyframes goUp {
+    0% { bottom: 50px; 
+    transform: scale(1);
+    }
+    100% { 
+    transform: scale(0.7);
+    bottom: 90px; }
+}
 </style>
 
 
 <div class="more-info">
+
+<div class="go-back publish" onclick="window.history.back()"><</div>
+
         <div><img  src="{{ post.picture }}" alt="Post Image"></div>
         <div>Кайрат Бектов</div>
         <p>

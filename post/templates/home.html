@@ -4,7 +4,11 @@
 
 {% block content %}
 
+<script>
 
+console.log("Hello,world")
+
+</script>
 
 {% load custom_filters %}
 <form method="GET" action="{% url 'home' %}" class="filter-form">
@@ -14,7 +18,7 @@
             <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
                 class="filter-input" 
                 {% if request.GET.filter|is_checked:tag.id %}checked{% endif %}>
-            <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
+            <label for="{{ tag.id }}" class="filter-label my tags"> {{ tag.name }}</label>
         </div>
         {% endfor %}
     </div>

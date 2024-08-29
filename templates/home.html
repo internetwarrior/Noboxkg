@@ -14,13 +14,51 @@ justify-content:end;
 }
 </style>
 
+<script>
+
+
+window.onload = function() {
+    function checkFilterCheckboxes() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const filters = urlParams.getAll('filter');
+
+        filters.forEach(filter => {
+            const checkbox = document.querySelector(`input[name="filter"][value="${filter}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    }
+
+    checkFilterCheckboxes();
+};
+
+
+
+</script>
+
+
+<style>
+.filter-bar {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+}
+
+.filter-option {
+    scroll-snap-align: start !important;
+}
+</style>
+
+
 <form class="tag-filter" method="GET" action="{% url 'home' %}" class="filter-form">
-    <div class="filter-bar">
+       <div class="filter-bar">
         {% for tag in tags.all %}
         <div class="filter-option">
             <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
                 class="filter-input" 
-              
                 >
             <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
         </div>
@@ -92,4 +130,8 @@ justify-content:end;
         {% endif %}
     </ul>
 </nav>
+
+
+
+
 {% endblock %}

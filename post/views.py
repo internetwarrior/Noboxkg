@@ -26,7 +26,7 @@ def home_view(request):
         tag_ids = [int(tag_id) for tag_id in tag_ids]
 
         # Start with all posts
-        posts = Post.objects.filter(state__in=["active", "archived"]).order_by('-date')
+        posts = Post.objects.filter(state__in=["active", "archived"])
 
         # Apply filtering to only include posts with all selected tags
         for tag_id in tag_ids:
@@ -34,7 +34,7 @@ def home_view(request):
 
         posts = posts.distinct()
     else:
-        posts = Post.objects.filter(state__in=["active", "archived"]).order_by('-date')
+        posts = Post.objects.filter(state__in=["active", "archived"])
 
     # Paginate the posts
     paginator = Paginator(posts, 6)  # Show 6 posts per page
