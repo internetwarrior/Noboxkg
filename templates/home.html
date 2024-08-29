@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% block title %}
+Найти квартиру Бишкек{% endblock %}
 {% block content %}
 
 
@@ -27,7 +28,7 @@ justify-content:end;
     </div>
     <div class="text-center">
     <div class="he">
-     <a style="outline:1px solid red; color:red;background:transparent;" href="{% url 'home' %}" type="submit" class="n-button">Сбросить</a>
+     <a style="outline:1px solid gray; color:gray;background:transparent;" href="{% url 'home' %}" type="submit" class="n-button">Сбросить</a>
       <button type="submit" class="n-button">Найти</button>
     </div>
        
@@ -51,7 +52,7 @@ justify-content:end;
             </div>
             
             <div class="price">
-                <div class="old-price">8000сом</div>
+
                <div>{{ post.price }} сом</div>
              </div>
              

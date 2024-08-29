@@ -20,7 +20,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(max_length=250)
-    contacts = models.IntegerField()
     picture = models.CharField(max_length=255)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default='being_checked')
