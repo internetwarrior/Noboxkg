@@ -30,7 +30,88 @@ z-index:1000}
 <path d="M94.9678 16.2611C95.2391 15.9066 95.66 15.6986 96.1064 15.6986L114.014 15.6986C114.469 15.6986 114.897 15.9146 115.167 16.2807L116.225 17.7143C116.924 18.6607 116.248 19.9994 115.072 19.9994H95.0096C93.8219 19.9994 93.1493 18.6379 93.871 17.6947L94.9678 16.2611Z" fill="#0E0E0E"/>
 </svg>
 </a>
+    <style>
+ 
+        
 
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            height:100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            top:0;
+            right:0;
+            border-radius:8px;
+        }
+        .hey3{
+        position:fixed;
+        height:100svh;
+        width:100%;
+        top:0;
+        right:0;
+        background:rgba(0,0,0,0.3);
+        z-index:10000;
+        }
+        
+        .sidebar .hey2{ 
+        padding: 20px;
+        
+        }
+        .logo2 {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu,
+        .footer-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li,
+        .footer-menu li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu li a,
+        .footer-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: block;
+            
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu li a:hover,
+        .footer-menu li a:hover {
+            color: #F39C12;
+        }
+
+        .menu li a i,
+        .footer-menu li a i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .contact-info {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+        }
+        .hidden{
+        display:none !important; 
+        }
+    </style>
 <style>
 .burger{
 box-size:none;
@@ -63,8 +144,51 @@ background:#000;
       </div>
  
      </div>
+     
+     
 
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.hey3').addEventListener('click', function(event) {
+        if (event.target === this) {
+            this.classList.toggle('hidden');
+        }
+    });
 
+    document.querySelector('.burger').addEventListener('click', function() {
+        document.querySelector('.hey3').classList.remove('hidden');
+    });
+});
+</script>
+
+<div class="hey3 hidden">
+<div class="sidebar">
+        <div class="hey2">
+            <div class="logo2">
+               Menu
+            </div>
+            <ul class="menu">
+                <li><a href=" {% url 'home' %}" class="active"><i class="fas fa-home"></i>Главная страница</a></li>
+                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user"></i>Личный кабинет</a></li>
+                <li><a href="#"><i class="fas fa-bookmark"></i>Сохранённые объявления</a></li>
+                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user-plus"></i>Зарегистрироваться</a></li>
+            </ul>
+        </div>
+        <div class="hey2">
+            <ul class="footer-menu">
+                <li><a href="https://t.me/noboxkg"><i class="fas fa-newspaper"></i>Новости</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i>Пользовательское соглашение</a></li>
+                <li><a href="https://t.me/noboxrules"><i class="fas fa-info-circle"></i>Правила проекта</a></li>
+            </ul>
+            <div class="contact-info">
+                <p>Bishkek 2023-2024</p>
+                <p>info@nobox.kg</p>
+                <p>All rights reserved</p>
+            </div>
+        </div>
+    </div>
+</div>
+ 
 
   {% if user.is_authenticated %}
     <div>Привет, {{ user.username }}</div>
