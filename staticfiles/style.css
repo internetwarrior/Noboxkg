@@ -154,7 +154,9 @@ input:checked + label {
 input:checked + label::before {
   content: "-";
   color: black; /* Text color of the ::before content */
-  background-color: var(--gold); /* Background color for the ::before pseudo-element */
+  background:#ffd646;
+  outline: none;
+ /* Background color for the ::before pseudo-element */
   margin-right: 5px; /* Space between the content and the label text */
   display: inline-block; /* Ensure the pseudo-element is inline */
   

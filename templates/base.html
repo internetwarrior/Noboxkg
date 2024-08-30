@@ -17,7 +17,8 @@
     <header>
         {% include 'navbar.html' %}
     </header>
-
+<style>
+</style>
     <main class="">
         {% block content %}
         {% endblock %}
@@ -42,10 +43,6 @@ padding:12px;
  
 <!-- Latest compiled and minified JavaScript -->
 <footer class="bg-light text-center py-3 mt-4">
-
-<<<<<<< Updated upstream
-   
-=======
     <div class="">
         {% if user.is_authenticated %}
             <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
@@ -55,7 +52,6 @@ padding:12px;
         <a class="" href="{% url 'login' %}"></a>
        
         {% endif %}
->>>>>>> Stashed changes
          <p>&copy; 2024 Nobox.kg</p>
     </footer>
 </body>
