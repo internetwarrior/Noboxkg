@@ -28,14 +28,14 @@ TELEGRAM_BOT_TOKEN = "7512727925:AAHPb71kWaPUr9X8NAM7h3o1FAaEUkhNQc8"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = [
-    'https://nobox.kg',
-    'https://www.nobox.kg',
-]
+#CSRF_TRUSTED_ORIGINS = [
+#    'https://nobox.kg',
+#    'https://www.nobox.kg',
+#]
 
 # Application definition
 
@@ -130,7 +130,7 @@ AUTH_USER_MODEL = 'user.CustomUser'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "myst")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

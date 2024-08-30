@@ -50,3 +50,7 @@ def home_view(request):
     }
 
     return render(request, 'home.html', context)
+
+
+def tiktok(request):
+    return render(request, 'tiktok.html')

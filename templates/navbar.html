@@ -1,4 +1,8 @@
-<div class="search-bar">
+
+
+
+
+<div style="padding:0px; padding-left:6px;"class="search-bar">
 
 <style>
 .logo{
@@ -15,6 +19,7 @@ z-index:1000}
 
 
 </style>
+
        <a class ="logo" href="{% url 'home' %}"> 
 
 <svg width="145" height="56" viewBox="0 0 145 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,10 +30,44 @@ z-index:1000}
 <path d="M94.9678 16.2611C95.2391 15.9066 95.66 15.6986 96.1064 15.6986L114.014 15.6986C114.469 15.6986 114.897 15.9146 115.167 16.2807L116.225 17.7143C116.924 18.6607 116.248 19.9994 115.072 19.9994H95.0096C93.8219 19.9994 93.1493 18.6379 93.871 17.6947L94.9678 16.2611Z" fill="#0E0E0E"/>
 </svg>
 </a>
-      
-   {% if user.is_authenticated %}
+
+<style>
+.burger{
+box-size:none;
+background:var(--gold);
+color:black;
+font-size:54px;
+display:flex;
+flex-direction:column;
+align-items:start;
+justify-content:start;
+gap:6px;
+padding:20px;
+}
+
+.burger .hey{
+width:20px !important;
+}
+.burger div{
+width:24px;
+height:2.5px;
+background:#000;
+
+}
+
+</style>
+      <div class="burger">
+      <div></div>
+      <div></div>
+      <div class="hey"></div>
+      </div>
+ 
+     </div>
+
+
+
+  {% if user.is_authenticated %}
     <div>Привет, {{ user.username }}</div>
 {% else %}
     <a href="https://t.me/a1ina_bot?start=website">Войти</a>
 {% endif %}
-     </div>

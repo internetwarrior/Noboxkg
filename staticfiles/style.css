@@ -77,9 +77,7 @@ position: fixed;
   display: flex;
   align-items: center;
   justify-content:space-between;
-  padding: 10px;
   background-color: var(--white);
-  border-bottom: 1px solid var(--gray-light);
   width: 100%;
   box-sizing: border-box;
 }
@@ -96,21 +94,8 @@ position: fixed;
                border-radius:8px;
                margin:10px;
                }
-.search-bar input {
-  flex: 1;
-  padding: 8px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  margin-right: 10px;
-  background-color: #ECECEC;
-}
 
-.search-bar img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
+
 
 .filter-bar {
   display: flex;
@@ -154,9 +139,7 @@ input:checked + label {
 input:checked + label::before {
   content: "-";
   color: black; /* Text color of the ::before content */
-  background:#ffd646;
-  outline: none;
- /* Background color for the ::before pseudo-element */
+  background-color: var(--gold); /* Background color for the ::before pseudo-element */
   margin-right: 5px; /* Space between the content and the label text */
   display: inline-block; /* Ensure the pseudo-element is inline */
   
