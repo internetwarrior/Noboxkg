@@ -36,7 +36,8 @@ console.log("Hello,world")
                   {% for post in posts %}
         <a href="{% url 'post_detail' post.id %}" class="listing">
             <img src="{{ post.picture }}" alt="Room">
-            <div class="details">
+            <div class="details
+            ">
             {% for tag in post.tags.all %}
                                    {{ tag.name }} |
             {% endfor %}
