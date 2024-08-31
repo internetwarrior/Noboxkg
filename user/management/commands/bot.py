@@ -192,6 +192,12 @@ from django.core.exceptions import ObjectDoesNotExist
 async def handle_photo_message(message: types.Message):
     global user_posts
     user_id = message.from_user.id
+    file_id = message.photo[-1].file_id
+    file = await bot.get_file(file_id)
+    file_path = file.file_path
+    photo = await bot.download_file(file_path,)
+    print(photo)
+    await message.reply(file_path)
     if user_id in user_posts and user_posts[user_id].get('step') == 'photo':
         user_posts[user_id]['photo'] = message.photo[-1].file_id
         # Prepare post data to save to the model
@@ -202,10 +208,9 @@ async def handle_photo_message(message: types.Message):
         post_it = InlineKeyboardMarkup().add(InlineKeyboardButton("Подтвердить",callback_data="post_it"))
         await bot.send_photo(
     chat_id=message.chat.id, 
-    photo=the_post["photo"], 
+    photo=the_post["photo"],
     caption=post_info, 
-    reply_markup=post_it
-)
+    reply_markup=post_it,)
         
         
 @dp.callback_query_handler(lambda c: c.data == "post_it")
@@ -220,12 +225,18 @@ async def post_it_callback(callback_query: types.CallbackQuery):
             return
 
         # Create the post
+        
+        file_id = post_data['photo']
+        file = await bot.get_file(file_id)
+        file_path = file.file_path
+        photo = await bot.download_file(file_path,)
         post = await sync_to_async(Post.objects.create)(
             author=user,
             price=post_data['price'],
             description=post_data['description'],
-            picture=post_data['photo']
+            picture= photo,
         )
+        callback_query.message.reply(file_path)
 
         # Set tags for the post
         tags = await sync_to_async(Tag.objects.filter)(id__in=post_data["tags"])
