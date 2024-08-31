@@ -87,11 +87,14 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Noboxkg',
+        'USER': 'nobox',
+        'PASSWORD': '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',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -117,8 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-russian'
 
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Asia/Bishkek'
 USE_I18N = True
 
 USE_TZ = True
