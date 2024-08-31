@@ -4,6 +4,64 @@
 
 <div style="padding:0px; padding-left:6px;"class="search-bar">
 
+
+<style>
+    .hey3 {
+        position: fixed;
+        height: 100svh;
+        width: 100%;
+        top: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        opacity: 1;
+        animation: fadeIn 0.5s forwards;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: #fff;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 0;
+        right: -700px;
+        border-radius: 8px;
+        animation: slideIn 0.2s forwards ease-in;
+    }
+
+    .hey3.hidden {
+        opacity: 0;
+        animation: none;
+    }
+
+    .sidebar.hidden {
+        right: -700px;
+        animation: none;
+    }
+
+    @keyframes fadeIn {
+        from {
+                  background: rgba(0, 0, 0, 0.0);
+        }
+        to {
+                   background: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            right: -700px;
+        }
+        to {
+            right: 0;
+        }
+    }
+</style>
+
 <style>
 .logo{
 padding-right:5px;

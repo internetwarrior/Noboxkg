@@ -13,6 +13,15 @@ align-items:flex-end;
 flex-direction:row;
 justify-content:end;
 }
+
+.horizontal-div {
+    overflow: auto;
+    scrollbar-width: none; /* For Firefox */
+}
+
+.horizontal-div::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
 </style>
 
 <script>
@@ -35,7 +44,22 @@ window.onload = function() {
 };
 
 
+function scrollToRight() {
+    return new Promise((resolve) => {
+        const div = document.querySelector('.horizontal-div');
+        div.scrollLeft = div.scrollWidth/5;
+        setTimeout(resolve, 100); // Adjust timeout as needed
+    });
+}
 
+function scrollBack() {
+    const div = document.querySelector('.horizontal-div');
+    div.scrollTo({ left: 0, behavior: 'smooth' });
+}
+
+window.onload = () => {
+    scrollToRight().then(scrollBack);
+};
 </script>
 
 
@@ -54,8 +78,8 @@ window.onload = function() {
 </style>
 
 
-<form style=""class="tag-filter" method="GET" action="{% url 'home' %}" class="filter-form">
-       <div class="filter-bar">
+<form style=""class="tag-filter" method="GET" action="{% url 'home' %}" class="filter-form horizjontal-div">
+       <div class="filter-bar horizontal-div">
         {% for tag in tags.all %}
         <div class="filter-option">
             <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
