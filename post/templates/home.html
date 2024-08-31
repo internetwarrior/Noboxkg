@@ -44,7 +44,12 @@ console.log("Hello,world")
             
             <div class="price">
                
-               <div>{{ post.price }} сом</div>
+               <div>{% if post.price == 0%}
+    Договор
+    {% else %}
+    {{ post.price }}сом
+    
+    {% endif %}</div>
              </div>
              
                  
