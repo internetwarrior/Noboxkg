@@ -192,12 +192,12 @@ from django.core.exceptions import ObjectDoesNotExist
 async def handle_photo_message(message: types.Message):
     global user_posts
     user_id = message.from_user.id
-    file_id = message.photo[-1].file_id
-    file = await bot.get_file(file_id)
-    file_path = file.file_path
-    photo = await bot.download_file(file_path,)
-    print(photo)
-    await message.reply(file_path)
+#    file_id = message.photo[-1].file_id
+#    file = await bot.get_file(file_id)
+#    file_path = file.file_path
+#    photo = await bot.download_file(file_path,)
+#    print(photo)
+#    await message.reply(file_path)
     if user_id in user_posts and user_posts[user_id].get('step') == 'photo':
         user_posts[user_id]['photo'] = message.photo[-1].file_id
         # Prepare post data to save to the model
@@ -211,8 +211,105 @@ async def handle_photo_message(message: types.Message):
     photo=the_post["photo"],
     caption=post_info, 
     reply_markup=post_it,)
+
+
+
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from aiogram import types
+from aiogram.dispatcher import Dispatcher
+from django.core.exceptions import ObjectDoesNotExist
+from asgiref.sync import sync_to_async
+
+@dp.callback_query_handler(lambda c: c.data == "post_it")
+async def post_it_callback(callback_query: types.CallbackQuery):
+    user_id = callback_query.from_user.id
+    if user_posts.get(user_id) and user_posts[user_id]['step'] == "confirm":
+        post_data = user_posts.pop(user_id)
+        try:
+            user = await sync_to_async(CustomUser.objects.get)(username=user_id)
+        except ObjectDoesNotExist:
+            await callback_query.message.answer("Ошибка: пользователь не найден.")
+            return
+
+        # Download the image
+        file_id = post_data['photo']
+        file = await bot.get_file(file_id)
+        file_path = file.file_path
+        photo_data = await bot.download_file(file_path)
+
+        # Convert BytesIO to bytes
+        photo_bytes = photo_data.getvalue()
+
+        # Save the image to Django
+        file_name = f'{file_id}.jpg'  # Adjust the extension as needed
+        file_content = ContentFile(photo_bytes, file_name)
+        image_path = default_storage.save(f'images/{file_name}', file_content)
+
+        # Create the post
+        post = await sync_to_async(Post.objects.create)(
+            author=user,
+            price=post_data['price'],
+            description=post_data['description'],
+            picture=image_path
+        )
+
+        # Set tags for the post
+        tags = await sync_to_async(Tag.objects.filter)(id__in=post_data["tags"])
+        await sync_to_async(post.tags.set)(tags)
+
+        await callback_query.message.answer("Объявление создано! 🎉")
+        await lobby(callback_query.message)
+        await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id)
+
+"""
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from aiogram import types
+from aiogram.dispatcher import Dispatcher
+from django.core.exceptions import ObjectDoesNotExist
+from asgiref.sync import sync_to_async
+
+@dp.callback_query_handler(lambda c: c.data == "post_it")
+async def post_it_callback(callback_query: types.CallbackQuery):
+    user_id = callback_query.from_user.id
+    if user_posts.get(user_id) and user_posts[user_id]['step'] == "confirm":
+        post_data = user_posts.pop(user_id)
+        try:
+            user = await sync_to_async(CustomUser.objects.get)(username=user_id)
+        except ObjectDoesNotExist:
+            await callback_query.message.answer("Ошибка: пользователь не найден.")
+            return
+
+        # Download the image
+        file_id = post_data['photo']
+        file = await bot.get_file(file_id)
+        file_path = file.file_path
+        photo_data = await bot.download_file(file_path)
         
-        
+        # Save the image to Django
+        file_name = f'{file_id}.jpg'  # Adjust the extension as needed
+        file_content = ContentFile(photo_data, file_name)
+        image_path = default_storage.save(f'images/{file_name}', file_content)
+
+        # Create the post
+        post = await sync_to_async(Post.objects.create)(
+            author=user,
+            price=post_data['price'],
+            description=post_data['description'],
+            picture=image_path
+        )
+
+        # Set tags for the post
+        tags = await sync_to_async(Tag.objects.filter)(id__in=post_data["tags"])
+        await sync_to_async(post.tags.set)(tags)
+
+        await callback_query.message.answer("Объявление создано! 🎉")
+        await lobby(callback_query.message)
+        await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id)
+
+"""
+"""
 @dp.callback_query_handler(lambda c: c.data == "post_it")
 async def post_it_callback(callback_query: types.CallbackQuery):
     user_id = callback_query.from_user.id
@@ -247,7 +344,7 @@ async def post_it_callback(callback_query: types.CallbackQuery):
         await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id)
         
         
-        
+"""
 @dp.callback_query_handler(lambda c: c.data == 'support')
 async def process_support(callback_query: types.CallbackQuery):
     support_message = "Обратитесь сюда @NoboxSupport\nИли @lnternetwarrior(Главный модер)"
