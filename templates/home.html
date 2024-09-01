@@ -81,12 +81,16 @@ window.onload = () => {
 <form style=""class="tag-filter" method="GET" action="{% url 'home' %}" class="filter-form horizjontal-div">
        <div class="filter-bar horizontal-div">
         {% for tag in tags.all %}
+        {% if not tag.is_admins %}
+    
         <div class="filter-option">
             <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
                 class="filter-input" 
                 >
             <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
         </div>
+       
+        {% endif %}
         {% endfor %}
     </div>
     <div class="text-center">
@@ -99,6 +103,8 @@ window.onload = () => {
         
     </div>
 </form>
+
+
 <div class="container">
 
       
@@ -110,7 +116,10 @@ window.onload = () => {
             <img src="media/{{ post.picture }}" alt="Room">
             <div class="details">
             {% for tag in post.tags.all %}
-                                   {{ tag.name }} |
+            {% if not tag.is_admins %}
+            {{ tag.name }} |
+ 	    {% endif %}
+         
             {% endfor %}
             </div>
             
@@ -118,6 +127,7 @@ window.onload = () => {
 
                <div>{% if post.price == 0%}
     Договор
+     {% elif post.price == 7777%}
     {% else %}
     {{ post.price }}сом
     
