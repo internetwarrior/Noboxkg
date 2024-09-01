@@ -26,7 +26,7 @@ def create_or_update_user_profile(user_id, username, first_name, last_name, phon
             'first_name': first_name,
             'last_name': last_name,
             'phone_number': phone_number,
-            'email': email
+            'email': email,
         }
     )
     return user, profile

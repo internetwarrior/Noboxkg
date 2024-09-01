@@ -21,8 +21,8 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField(max_length=500)
-    
-    picture = models.CharField(default=None, max_length=100)
+    picture = models.ImageField(upload_to='post_img/')
+#    picture = models.CharField(default=None, max_length=100)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default='being_checked')
     
