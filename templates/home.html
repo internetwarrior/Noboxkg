@@ -4,6 +4,111 @@
 Найти квартиру Бишкек{% endblock %}
 {% block content %}
 
+                <style>
+                
+   .theme-1 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    border-radius: 0px !important;
+    position: relative !important; 
+}
+
+.theme-1 img {
+    border-radius: 0px !important;
+}
+
+.theme-1 .price {
+    position: absolute !important;
+    top: 0% !important;
+    background: rgba(0,0,0,0.9);
+    right:0px;
+    padding: 6px;
+    transform:skew(-20deg)
+}
+
+.theme-1 .price div {
+transform:skew(20deg);
+color: white;
+}
+
+.theme-1 .details {
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+}
+
+.theme-1 .details div {
+background:var(--gold);
+padding:4px;
+color:rgba(0,0,0,0.8);
+transform:skew(-20deg)
+}
+.theme-1 .details p{
+transform:skew(20deg);
+padding: 2px 4px;
+font-size:16px;
+font-weight:600;
+}
+
+.theme-button-1  {
+border-radius: 0px !important;
+background: rgba(0,0,0,0.95) !important;
+color:white;
+padding:8px 16px !important;
+position:relative;
+margin:0px !important;
+}
+
+
+.theme-button-right-1  {
+border-radius: 0px !important;
+background: var(--gold);
+color: black;
+padding:8px 16px !important;
+position:relative;
+margin:0px !important;
+}
+
+.n-button {
+margin:10px;
+}
+
+.theme-button-right-1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-width: 19px; /* Adjust size as needed */
+    border-style: solid;
+    border-color: transparent transparent transparent var(--gold); /* Adjust color and direction */
+    transform: translateY(-50%);
+}
+
+.theme-button-1::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right:100%;
+    border-width: 19px; /* Adjust size as needed */
+    border-style: solid;
+    border-color: transparent rgba(0,0,0,0.95)  transparent transparent; /* Adjust color and direction */
+    transform: translateY(-50%);
+}
+
+.page-nav ul{
+margin:20px;
+gap:0px !important;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+        
+        </style>
+
+
+
 
 <style>
 .tag-filter .he{
@@ -103,26 +208,33 @@ window.onload = () => {
 
       
         <div class="row">
-     
-            <div class="listing-grid">
+        
+
+            <div class=" listing-grid">
                   {% for post in posts %}
-        <a href="{% url 'post_detail' post.id %}" class="listing">
+        <a href="{% url 'post_detail' post.id %}" class=" theme-1 listing">
             <img src="media/{{ post.picture }}" alt="Room">
+              
             <div class="details">
             {% for tag in post.tags.all %}
-                                   {{ tag.name }} |
+            <div>
+                                   <p>{{ tag.name }}</p>
+                                   </div>
             {% endfor %}
             </div>
             
             <div class="price">
 
-               <div>{% if post.price == 0%}
+               <div id="price">{% if post.price == 0%}
     Договор
     {% else %}
-    {{ post.price }}сом
+    
+{{post.price}}
     
     {% endif %}</div>
              </div>
+             
+
              
                  
                  </a>
@@ -136,28 +248,54 @@ window.onload = () => {
                </div>        
                                    
     </div>
-    
+    <script>
+    window.onload = function() {
+    var currency = "сом"
+        var priceElements = document.querySelectorAll('#price');
+        priceElements.forEach(priceElement => {
+            var price = parseFloat(priceElement.textContent);
+            if (price) {
+                priceElement.textContent = price.toLocaleString('en-US').replace(/,/g, ' ') + currency;
+            }
+        });
+    };
+</script>
                         {% for post in posts %}
     <!-- Your post display logic here -->
 {% endfor %}
 
-<nav aria-label="Page navigation">
+<nav class="page-nav"aria-label="Page navigation">
     <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-            <li class="page-item">
+            <li class="theme-button-1 n-button">
                 <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}" aria-label="Previous">
-                    <span style="opacity:0.5" class="n-button" aria-hidden="true">&laquo; Предыдущие</span>
+                    <span aria-hidden="true">&laquo; Предыдущие</span>
                 </a>
             </li>
+               <div style=" font-size:18px; font-weight:bold; 
+        ">|</div>
         {% endif %}
+        
+
+     
+        
+        
 
         {% if page_obj.has_next %}
-            <li class="page-item">
+            <li class="theme-button-right-1 n-button">
                 <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}" aria-label="Next">
-                    <span class="n-button" aria-hidden="true">Следующие &raquo;</span>
+                    <span class="" aria-hidden="true">Следующие &raquo;</span>
                 </a>
             </li>
+            
+                 <div style=" font-size:18px; font-weight:bold; 
+        ">|</div>
+           <div style=" font-size:18px; font-weight:bold; 
+        ">/\</div>
         {% endif %}
+        
+
+          
     </ul>
 </nav>
 
