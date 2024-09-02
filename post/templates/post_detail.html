@@ -190,7 +190,7 @@ margin:auto;
     
     <br/>
     <br/>
-
+     {% if not post.author.is_staff  %}
       <div class="label">Контакты:</div>
         <h3> 
     <b>+
@@ -200,6 +200,7 @@ margin:auto;
 {% endwith %}
 {% else %}
     🏚 Объявление уже в архиве...
+{% endif %}
 {% endif %}
 </b>
 </h3>
