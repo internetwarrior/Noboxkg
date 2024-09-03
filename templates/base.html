@@ -18,7 +18,22 @@
         {% include 'navbar.html' %}
     </header>
 <style>
+a {
+    -webkit-tap-highlight-color: transparent; /* Disable default blue highlight */
+}
 
+a:active {
+    animation: redHighlight 0.1s ease-in-out forwards; /* Smooth transition animation */
+}
+
+@keyframes redHighlight {
+    0% {
+        background-color: transparent;
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.10); /* Red highlight */
+    }
+}
 </style>
     <main style="padding-top:38px;"  class="">
         {% block content %}

@@ -63,7 +63,13 @@ font-size: 16px;
     transform: scale(0.7);
     bottom: 90px; }
 }
+
+.text{
+font-family:inherit;
+font-weight:light;}
 </style>
+
+
 
 
 <div 
@@ -133,7 +139,7 @@ margin:auto;
       </div>
       <br/>
       
-    <pre style="white-space: pre-wrap; font-size:16px;">
+    <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
  
       <div class="label">Особые примечания:</div>
      {{ post.description }}</pre>
@@ -151,22 +157,22 @@ margin:auto;
     " class="rate">
     
     
-<label> 😍 <input value="1" edit="false" style="display:none"/><br/>
-<small>1</small>
+<label onclick="alert('Вы поставили лайк!')"> 😍 <input value="1" edit="false" style="display:none"/><br/>
+<small>28</small>
 </label>
-<label style="flex: 1;"> 🙂 
+<label style="flex: 1;" onclick="alert('Спасибо!')"> 🙂 
     <input value="0" edit="false" style="display: none" /><br/>
-    <small>2</small>
+    <small>21</small>
 </label>
-<label style="flex: 1;"> 😆 
+<label style="flex: 1;" onclick="alert('Принято...')"> 😆 
     <input value="1" edit="false" style="display: none" /><br/>
-    <small>3</small>
+    <small>10</small>
 </label>
-<label style="flex: 1;"> 🏚 
+<label style="flex: 1;" onclick="alert('Оставь свои контакты, мы свяжемся')"> 🏚 
     <input value="1" edit="false" style="display: none" /><br/>
-    <small>4</small>
+    <small>15</small>
 </label>
-<label style="flex: 1;"> 👨‍💻 
+<label style="flex: 1;" onclick="alert('Пост был отправлен на проверку!')"> 👨‍💻 
     <input value="1" edit="false" style="display: none" /><br/>
     <small>5</small>
 </label>

@@ -8,7 +8,7 @@ from user.models import CustomUser, TelegramProfile
 from collections import OrderedDict
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from post.models import Post, Tag
-
+import re
 bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
 dp = Dispatcher(bot)
 
@@ -19,15 +19,19 @@ user_posts = {}
 ADMINS_IDS = []
 
 async def check_admin(user_id):
+    # Assuming ADMINS_IDS is a list of integers or strings
+    if not isinstance(user_id, (int, str)):
+        return False
+
     if user_id in ADMINS_IDS:
         return True
-    if len(ADMINS_IDS) < 2:
-        telegram_profile = await sync_to_async(CustomUser.objects.get)(username=user_id)
-        if telegram_profile.is_staff or telegram_profile.is_superuser:
+    elif len(ADMINS_IDS) < 2:
+        user = await sync_to_async(CustomUser.objects.get)(username=user_id)
+        if user.is_staff or user.is_superuser:
             ADMINS_IDS.append(user_id)
             return True
-    return False
 
+    return False
 
 
 
@@ -47,25 +51,25 @@ def create_or_update_user_profile(user_id, username, first_name, last_name, phon
     return user, profile
 
 
-async def lobby(msg: types.Message):
-    user_id = msg.from_user.id
+async def lobby(user_id):
     keyboard = InlineKeyboardMarkup()
     keyboard.add(InlineKeyboardButton("🔥 Подать объявление", callback_data="post_ad"))
     keyboard.add(InlineKeyboardButton("⭐️ Мои объявления", url=f"https://nobox.kg?={user_id}"))
     keyboard.add(InlineKeyboardButton("👨‍💻 Тех. Поддержка", callback_data="support"))
-    if await check_admin(user_id):
+    is_admin =  await check_admin(user_id)
+    if is_admin:
         keyboard.add(InlineKeyboardButton("🦸‍♂️ Перейти к управлению", url="https://nobox.kg/superman/"))
-    await msg.reply(
+    else:
+        print(is_admin)
+    await bot.send_message(user_id,
     "Добро пожаловать в Nobox!\n"
     "Ищем квартиру? Или что-то размещаешь? 😏\n\n"
     "Наш телеграм Группа: @Nobox_kg\n\n"
     "📑 Объявлений пока: 0\n"
     "👩‍💻 На проверке: 0\n"
     "💫 Просмотров всего: 0",
-    reply_markup=keyboard
-)
-    
-    
+    reply_markup=keyboard)
+
 @sync_to_async
 def user_exists(user_id):
     return CustomUser.objects.filter(username=user_id).exists()
@@ -79,7 +83,7 @@ async def start_registration(message: types.Message):
     global user_posts
     if await user_exists(user_id):
         await message.answer(WELCOME_BACK_MESSAGE+ f"\nСлушаю тебя, {message.from_user.first_name} 🙋‍♀️\n\n")
-        await lobby(message)
+        await lobby(message.chat.id)
         user_posts[user_id] = None
         return
     users[user_id] = {
@@ -88,7 +92,7 @@ async def start_registration(message: types.Message):
         'last_name': message.from_user.last_name,
         'step': 'phone'
     }
-    btn = types.KeyboardButton("Отправить", request_contact=True)
+    btn = types.KeyboardButton("🟡Отправить🟡", request_contact=True)
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True).add(btn)
     await message.answer(ASK_PHONE, reply_markup=kb)
 
@@ -160,7 +164,9 @@ async def confirm_tags(callback_query: types.CallbackQuery):
 @dp.message_handler(commands=['debug'])
 async def start_registration(message: types.Message):
             keyboard = await select_tags(message)
-            await message.reply('Выберите теги из списка', reply_markup =keyboard)
+            user_id = message.from_user.id
+            user = await sync_to_async(CustomUser.objects.get)(username=user_id)
+            print(user)
 
 """
 @dp.message_handler(commands=['edit'])
@@ -204,7 +210,7 @@ async def handle_email(message: types.Message):
         )
         
         await message.answer(REGISTRATION_COMPLETED_MESSAGE)
-        await lobby(message)
+        await lobby(message.from_user.id)
     if user_id in user_posts:
         step = user_posts[user_id]['step']
         
@@ -278,14 +284,16 @@ from asgiref.sync import sync_to_async
 @dp.callback_query_handler(lambda c: c.data == "post_it")
 async def post_it_callback(callback_query: types.CallbackQuery):
     user_id = callback_query.from_user.id
+
     if user_posts.get(user_id) and user_posts[user_id]['step'] == "confirm":
         post_data = user_posts.pop(user_id)
+
         try:
             user = await sync_to_async(CustomUser.objects.get)(username=user_id)
+
         except ObjectDoesNotExist:
             await callback_query.message.answer("Ошибка: пользователь не найден.")
             return
-
         # Download the image
         file_id = post_data['photo']
         file = await bot.get_file(file_id)
@@ -299,23 +307,47 @@ async def post_it_callback(callback_query: types.CallbackQuery):
         file_name = f'{file_id}.jpg'  # Adjust the extension as needed
         file_content = ContentFile(photo_bytes, file_name)
         image_path = default_storage.save(f'images/{file_name}', file_content)
+        price_str = post_data['price'].replace(' ', '').replace(',', '.')
 
+        try:
+    # Remove spaces from the input string
+            price_str = post_data["price"].replace(" ", "")
+    
+    # Extract numbers from the cleaned string
+            numbers = re.findall(r'\d+', price_str)
+    
+            if numbers:
+        # Join all found numbers and convert to integer
+               clean_price_str = ''.join(numbers)
+               price = int(clean_price_str)
+            else:
+        # No numbers found, set price to 0
+               price = 0
+        except ValueError:
+    # If conversion fails, set price to 0
+            price = 0
         # Create the post
+        if await check_admin(user_id):
+           state = "active"
+        else:
+           state = "being_checked"
         post = await sync_to_async(Post.objects.create)(
             author=user,
-            price=post_data['price'],
+            price=price,
             description=post_data['description'],
-            picture=image_path
+            picture=image_path,
+            state =  state,
         )
 
         # Set tags for the post
         tags = await sync_to_async(Tag.objects.filter)(id__in=post_data["tags"])
         await sync_to_async(post.tags.set)(tags)
-
         await callback_query.message.answer("Объявление создано! 🎉")
-        await lobby(callback_query.message)
+        try:
+           await lobby(callback_query["from"]["id"])
+        except:
+           print("error here")
         await bot.delete_message(chat_id=callback_query.message.chat.id, message_id=callback_query.message.message_id)
-
 
 @dp.callback_query_handler(lambda c: c.data == 'support')
 async def process_support(callback_query: types.CallbackQuery):
@@ -368,4 +400,4 @@ class Command(BaseCommand):
     help = "Start Telegram bot"
 
     def handle(self, *args, **kwargs):
-        executor.start_polling(dp, skip_updates=True)
+        executor.start_polling(dp, skip_updates=False)

@@ -44,20 +44,13 @@ padding:0px 4px;
 background: rgba(0,0,0,0.9);
 padding:4px;
 color:white;
+transform:skew(-20deg)
 }
 .theme-1 .details p{
+transform:skew(20deg);
 padding: 2px 4px;
 font-size:16px;
 font-weight:600;
-}
-
-.themek::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
 }
 
 .theme-button-1  {
@@ -233,18 +226,19 @@ window.onload = () => {
                                    </div>
             {% endfor %}
             </div>
-            {% if post.price != 7777 %}            
+            
             <div class="price">
+            {% if post.price != 7777 %}
                <div id="price">{% if post.price == 0%}
     Договор
     {% else %}
 {{post.price}}
     
     {% endif %}
+{% endif %}
 </div>
              </div>
              
-{% endif %}
 
              
                  
