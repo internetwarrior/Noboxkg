@@ -31,7 +31,11 @@ TELEGRAM_BOT_TOKEN = "7512727925:AAHPb71kWaPUr9X8NAM7h3o1FAaEUkhNQc8"
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["*"]
+
+
+#ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+ALLOWED_HOSTS = ['*']
+
 CSRF_TRUSTED_ORIGINS = [
     'https://nobox.kg',
     'https://www.nobox.kg',
@@ -50,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'post.apps.PostConfig',
+    'api','rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -147,3 +153,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# myproject/settings.py
+
+
+handler404 = 'myapp.views.custom_404_view'

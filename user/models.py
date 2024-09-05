@@ -1,5 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
+from post.models import Post
+
+
+
+
 
 class CustomUser(AbstractUser):
     groups = models.ManyToManyField(Group, related_name='customuser_set')
@@ -19,3 +24,14 @@ class TelegramProfile(models.Model):
 
     def __str__(self):
         return f"{self.username or self.first_name} ({self.user.username})"
+
+
+class UserSession(models.Model):
+    ip = models.GenericIPAddressField()
+    visited_posts = models.ManyToManyField(Post, blank=True)  # Assuming Post is the name of your post model
+    id = models.AutoField(primary_key=True)
+    created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(CustomUser, null=True, blank=True, on_delete=models.SET_NULL, default=None)
+
+    def __str__(self):
+        return f"Session ID: {self.id} - IP: {self.ip}"

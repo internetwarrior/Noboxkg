@@ -7,4 +7,5 @@ urlpatterns = [
     path('superman/', admin.site.urls),
     path('', include('user.urls')),
     path('', include('post.urls')),
+    path('api_v1/', include('api.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
