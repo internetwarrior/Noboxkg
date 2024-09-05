@@ -12,6 +12,8 @@ a{
 all:unset;}
 
 
+
+
                
 :root {
   --background-color: #f2f2f2;
@@ -23,10 +25,16 @@ all:unset;}
   --gold-hover: #ffc700;
   --border-color: #ccc;
   --link-color: #007bff;
+  --shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  /* --shadow:  rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;; */
+  /* --shadow:  rgba(255, 208, 0, 0.952) 0px 3px 8px; */
+}
+button,a{
+  cursor: pointer;
 }
 
 main{
-padding-top:64px;
+margin:64px;
 }
 
 body {
@@ -60,10 +68,11 @@ border-radius:100%;
 display:flex;
 align-items:center;
 justify-content:center;
+cursor: pointer;
 height:56px;
 width:56px;
 background:#ffd646;
-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+box-shadow: var(--shadow);
 }
 
 .publish div{
@@ -73,13 +82,17 @@ line-height:0;
 }
 
 .search-bar {
-position: fixed;
+ position: fixed;
   display: flex;
   align-items: center;
   justify-content:space-between;
-  background-color: var(--white);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--gray-light);
   width: 100%;
   box-sizing: border-box;
+  top: 0;
+right: 0;
 }
 
 
@@ -94,8 +107,21 @@ position: fixed;
                border-radius:8px;
                margin:10px;
                }
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  background-color: #ECECEC;
+}
 
-
+.search-bar img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 
 .filter-bar {
   display: flex;
@@ -142,7 +168,7 @@ input:checked + label::before {
   background-color: var(--gold); /* Background color for the ::before pseudo-element */
   margin-right: 5px; /* Space between the content and the label text */
   display: inline-block; /* Ensure the pseudo-element is inline */
-  
+  outline: none;
 }
 
 
@@ -163,7 +189,7 @@ input:checked + label::before {
   padding:10px;
   background-color: var(--white);
   border-radius: 8px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  box-shadow:var(--shadow);
 }
 
 
@@ -179,7 +205,7 @@ input:checked + label::before {
 }
 
 .listing .details {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .listing .details {
@@ -208,7 +234,7 @@ input:checked + label::before {
   background-color: var(--white);
   padding: 13px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   width: 350px;
   margin: 0 auto;
 }

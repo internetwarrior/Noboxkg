@@ -5,9 +5,6 @@
 {% block content %}
 
 
-
-
-
 <style>
 .more-info {
 padding:12px;
@@ -76,6 +73,9 @@ font-weight:light;}
 style="
 padding:12px;
 margin:auto;
+max-width: 400px;
+background-color: white;
+box-shadow: var(--shadow);
 ">
 
 <div class="go-back publish" onclick="window.history.back()"><</div>
@@ -95,7 +95,7 @@ margin:auto;
         max-height: 250px;
         object-fit: cover;
         "
-        src="https://nobox.kg/media/{{ post.picture }}" alt="Post Image"
+        src="media/{{ post.picture }}" alt="Post Image"
         >
        
          </div>
@@ -179,40 +179,37 @@ margin:auto;
     </div>
     </form>
     
+    <footer style="all: unset;">
     <div style="
-    background:rgba(0,0,0,0.9);
-    padding:0px 12px;
-    color: rgba(255,255,255,0.9);
+    width: 100%;
+    /* color: rgba(255,255,255,0.9); */
     border-radius:0px 0px 8px 8px;" 
     
     >
     
 
-<div class="label">Опубликовано:</div>
-        
-
+    <div class="label">Опубликовано:</div>
+    
+    
     {{post.created}}
-  
+    
     
     <br/>
     <br/>
-     {% if not post.author.is_staff  %}
-      <div class="label">Контакты:</div>
-        <h3> 
-    <b>+
-    {% if post.state == "active" %}
- {% with post.author.phone_number as number %}
-    {{ number|slice:":3" }} {{ number|slice:"3:6" }} {{ number|slice:"6:" }}
-{% endwith %}
-{% else %}
-    🏚 Объявление уже в архиве...
-{% endif %}
-{% endif %}
-</b>
-</h3>
-  </div>
-<div>
-{{dev}}
+    {% if not post.author.is_staff  %}
+    <div class="label">Контакты:</div>
+    <h3> 
+        <b>+
+            {% if post.state == "active" %}
+            {% with post.author.phone_number as number %}
+            {{ number|slice:":3" }} {{ number|slice:"3:6" }} {{ number|slice:"6:" }}
+            {% endwith %}
+            {% else %}
+            🏚 Объявление уже в архиве...
+            {% endif %}
+            {% endif %}
+        </b>
+    </h3>
 </div>
-
+</footer>
 {% endblock %}
