@@ -1,90 +1,94 @@
-
-{% extends 'base.html' %}
-{% block title %}
-Найти квартиру Бишкек{% endblock %}
+{% extends 'base.html' %} {% block title %} Найти квартиру Бишкек{% endblock %}
 {% block content %}
 
-                <style>
-                
-   .theme-1 {
+<style>
+  .theme-1 {
     display: flex !important;
     flex-direction: column !important;
     gap: 8px !important;
     border-radius: 0px !important;
-    position: relative !important; 
-}
+    position: relative !important;
+  }
 
-.theme-1 img {
+  .theme-1 img {
     border-radius: 0px !important;
-}
+  }
 
-.theme-1 .price {
+  .theme-1 .price {
     position: absolute !important;
     top: 0% !important;
     background: var(--gold);
-    right:0px;
+    right: 0px;
     padding: 6px;
-    opacity:0.9;
-    transform:skew(-20deg)
-}
+    opacity: 0.9;
+    transform: skew(-20deg);
+  }
 
-.theme-1 .price div {
-transform:skew(20deg);
-color: black;
-}
+  .theme-1 .price div {
+    transform: skew(20deg);
+    color: black;
+  }
 
-.theme-1 .details {
-display:flex;
-flex-wrap:wrap;
-gap:6px;
-padding:0px 4px;
-}
+  .theme-1 .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0px 4px;
+  }
 
-.theme-1 .details div {
-background: rgba(0,0,0,0.9);
-padding:4px;
-color:white;
-}
-.theme-1 .details p{
-padding: 2px 4px;
-font-size:16px;
-font-weight:600;
-}
+  .theme-1 .details div {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 4px;
+    color: white;
+  }
+  .theme-1 .details p {
+    padding: 2px 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
 
-.themek::after {
-    content: '';
+  .themek::after {
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: inherit;
-    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-}
+    clip-path: polygon(
+      30% 0%,
+      70% 0%,
+      100% 30%,
+      100% 70%,
+      70% 100%,
+      30% 100%,
+      0% 70%,
+      0% 30%
+    );
+  }
 
-.theme-button-1  {
-border-radius: 0px !important;
-background: rgba(0,0,0,0.95) !important;
-color:white;
-padding:8px 16px !important;
-position:relative;
-margin:0px !important;
-}
+  .theme-button-1 {
+    border-radius: 0px !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    color: white;
+    padding: 8px 16px !important;
+    position: relative;
+    margin: 0px !important;
+  }
 
+  .theme-button-right-1 {
+    border-radius: 0px !important;
+    background: var(--gold);
+    color: black;
+    padding: 8px 16px !important;
+    position: relative;
+    margin: 0px !important;
+  }
 
-.theme-button-right-1  {
-border-radius: 0px !important;
-background: var(--gold);
-color: black;
-padding:8px 16px !important;
-position:relative;
-margin:0px !important;
-}
+  .n-button {
+    margin: 10px;
+  }
 
-.n-button {
-margin:10px;
-}
-
-.theme-button-right-1::after {
-    content: '';
+  .theme-button-right-1::after {
+    content: "";
     position: absolute;
     top: 50%;
     left: 100%;
@@ -92,236 +96,222 @@ margin:10px;
     border-style: solid;
     border-color: transparent transparent transparent var(--gold); /* Adjust color and direction */
     transform: translateY(-50%);
-}
+  }
 
-.theme-button-1::before{
-    content: '';
+  .theme-button-1::before {
+    content: "";
     position: absolute;
     top: 50%;
-    right:100%;
+    right: 100%;
     border-width: 19px; /* Adjust size as needed */
     border-style: solid;
-    border-color: transparent rgba(0,0,0,0.95)  transparent transparent; /* Adjust color and direction */
+    border-color: transparent rgba(0, 0, 0, 0.95) transparent transparent; /* Adjust color and direction */
     transform: translateY(-50%);
-}
+  }
 
-.page-nav ul{
-margin:20px;
-gap:0px !important;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-}
-        
-        </style>
-
-
-
-
-<style>
-.tag-filter .he{
-display:flex;
-width:100;
-align-items:flex-end;
-flex-direction:row;
-justify-content:end;
-}
-
-.horizontal-div {
-    overflow: auto;
-    scrollbar-width: none; /* For Firefox */
-}
-
-.horizontal-div::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Edge */
-}
+  .page-nav ul {
+    margin: 20px;
+    gap: 0px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 </style>
 
+<style>
+  .tag-filter .he {
+    display: flex;
+    width: 100;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: end;
+  }
 
+  .horizontal-div {
+    overflow: auto;
+    scrollbar-width: none; /* For Firefox */
+  }
+
+  .horizontal-div::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+</style>
 
 <style>
-.filter-bar {
+  .filter-bar {
     display: grid !important;
-    grid-template-columns: repeat(5, 1fr) !important;
+    grid-template-columns: repeat(20, 1fr) !important;
     gap: 4px !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
-}
+  }
 
-.filter-option {
+  .filter-option {
     scroll-snap-align: start !important;
-}
+  }
 </style>
 
-
-<form style=""class="tag-filter" method="GET" action="{% url 'home' %}" class="filter-form horizjontal-div">
-       <div class="filter-bar horizontal-div">
-        {% for tag in tags.all %}
-        {% if not tag.is_admins %}
-        <div class="filter-option">
-            <input type="checkbox" id="{{ tag.id }}" name="filter" value="{{ tag.id }}" 
-                class="filter-input" 
-                >
-            <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
-        </div>
-        {% endif %}
-        {% endfor %}
+<form
+  style=""
+  class="tag-filter"
+  method="GET"
+  action="{% url 'home' %}"
+  class="filter-form horizjontal-div"
+>
+  <div class="filter-bar horizontal-div">
+    {% for tag in tags.all %} {% if not tag.is_admins %}
+    <div class="filter-option">
+      <input
+        type="checkbox"
+        id="{{ tag.id }}"
+        name="filter"
+        value="{{ tag.id }}"
+        class="filter-input"
+      />
+      <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
     </div>
-    <div class="text-center">
+    {% endif %} {% endfor %}
+  </div>
+  <div class="text-center">
     <div class="he">
-     <a style="outline:1px solid gray; color:gray;background:transparent;" href="{% url 'home' %}" type="submit" class="n-button">Сбросить</a>
+      <a
+        style="outline: 1px solid gray; color: gray; background: transparent"
+        href="{% url 'home' %}"
+        type="submit"
+        class="n-button"
+        >Сбросить</a
+      >
       <button type="submit" class="n-button">Найти</button>
     </div>
-       
-        
-        
-    </div>
+  </div>
 </form>
 <div class="container">
-<img style="position:fixed;top:0px; opacity:0.06; z-index:-1; height:100vh;object-fit:cover; "  src="https://nobox.kg/static/bg.jpg"/>
-      
-        <div class="row">
-        
+  <img
+    style="
+      position: fixed;
+      top: 0px;
+      opacity: 0.06;
+      z-index: -1;
+      height: 100vh;
+      object-fit: cover;
+    "
+    src="https://nobox.kg/static/bg.jpg"
+  />
 
-            <div class=" listing-grid">
-                  {% for post in posts %}
-        <a href="{% url 'post_detail' post.id %}" class=" theme-1 listing">
-            <img src="media/{{ post.picture }}" alt="Room">
-              
-            <div class="details">
-            {% for tag in post.tags.all %}
-            <div style="{% if tag.id == 3 %} background: -webkit-linear-gradient(323deg, #519be1,#f87293,#f9b78b);background: linear-gradient(323deg, #519be1,#f87293,#f9b78b); color:white; {% endif %}">
-                                   <p>{% if tag.id == 2 %}🐺 {% endif %}{{ tag.name }}</p>
-                                   </div>
-            {% endfor %}
-            </div>
-            {% if post.price != 7777 %}            
-            <div class="price">
-               <div id="price">{% if post.price == 0%}
-    Договор
-    {% else %}
-{{post.price}}
-    
-    {% endif %}
-</div>
-             </div>
-             
-{% endif %}
+  <div class="row">
+    <div class="listing-grid">
+      {% for post in posts %}
+      <a href="{% url 'post_detail' post.id %}" class="theme-1 listing">
+        <img src="{{ post.picture }}" alt="Room" />
+        <!-- <img src="media/{{ post.picture }}" alt="Room" /> -->
 
-             
-                 
-                 </a>
-           
-               {% endfor %}
-          
-                   
-                    
+        <div class="details">
+          {% for tag in post.tags.all %}
+          <div
+            style="{% if tag.id == 3 %} background: -webkit-linear-gradient(323deg, #519be1,#f87293,#f9b78b);background: linear-gradient(323deg, #519be1,#f87293,#f9b78b); color:white; {% endif %}"
+          >
+            <p>{% if tag.id == 2 %}🐺 {% endif %}{{ tag.name }}</p>
+          </div>
+          {% endfor %}
+        </div>
+        {% if post.price != 7777 %}
+        <div class="price">
+          <div id="price">
+            {% if post.price == 0%} Договор {% else %} {{post.price}} 
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </a>
 
-             
-               </div>        
-                                   
+      {% endfor %}
     </div>
-                        {% for post in posts %}
-    <!-- Your post display logic here -->
-{% endfor %}
-<script>
-
-window.onload = function() {
-    // Function to check and set filter checkboxes based on URL parameters
-    function checkFilterCheckboxes() {
+  </div>
+  {% for post in posts %}
+  <!-- Your post display logic here -->
+  {% endfor %}
+  <script>
+    window.onload = function () {
+      // Function to check and set filter checkboxes based on URL parameters
+      function checkFilterCheckboxes() {
         const urlParams = new URLSearchParams(window.location.search);
-        const filters = urlParams.getAll('filter');
+        const filters = urlParams.getAll("filter");
 
-        filters.forEach(filter => {
-            const checkbox = document.querySelector(`input[name="filter"][value="${filter}"]`);
-            if (checkbox) {
-                checkbox.checked = true;
-            }
+        filters.forEach((filter) => {
+          const checkbox = document.querySelector(
+            `input[name="filter"][value="${filter}"]`
+          );
+          if (checkbox) {
+            checkbox.checked = true;
+          }
         });
-    }
+      }
 
-    // Function to scroll right and then back
-    function scrollToRight() {
+      // Function to scroll right and then back
+      function scrollToRight() {
         return new Promise((resolve) => {
-            const div = document.querySelector('.horizontal-div');
-            if (div) {
-                div.scrollLeft = div.scrollWidth / 5;
-                setTimeout(resolve, 100); // Adjust timeout as needed
-            } else {
-                resolve(); // No div to scroll, resolve immediately
-            }
+          const div = document.querySelector(".horizontal-div");
+          if (div) {
+            div.scrollLeft = div.scrollWidth / 5;
+            setTimeout(resolve, 100); // Adjust timeout as needed
+          } else {
+            resolve(); // No div to scroll, resolve immediately
+          }
         });
-    }
+      }
 
-    function scrollBack() {
-        const div = document.querySelector('.horizontal-div');
+      function scrollBack() {
+        const div = document.querySelector(".horizontal-div");
         if (div) {
-            div.scrollTo({ left: 0, behavior: 'smooth' });
+          div.scrollTo({ left: 0, behavior: "smooth" });
         }
-    }
+      }
 
-    // Execute both functions
-    checkFilterCheckboxes();
-    scrollToRight().then(scrollBack);
+      // Execute both functions
+      checkFilterCheckboxes();
+      scrollToRight().then(scrollBack);
 
-
-
-  
-    var currency = "сом"
-        var priceElements = document.querySelectorAll('#price');
-        priceElements.forEach(priceElement => {
-            var price = parseFloat(priceElement.textContent);
-            if (price) {
-                priceElement.textContent = price.toLocaleString('en-US').replace(/,/g, ' ') + currency;
-            }
-        });
-    
-
-
-
-
-
-
-};
-</script>
-<nav class="page-nav"aria-label="Page navigation">
+      var currency = "сом";
+      var priceElements = document.querySelectorAll("#price");
+      priceElements.forEach((priceElement) => {
+        var price = parseFloat(priceElement.textContent);
+        if (price) {
+          priceElement.textContent =
+            price.toLocaleString("en-US").replace(/,/g, " ") + currency;
+        }
+      });
+    };
+  </script>
+  <nav class="page-nav" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
-        {% if page_obj.has_previous %}
-            <li class="theme-button-1 n-button">
-                <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo; Предыдущие</span>
-                </a>
-            </li>
-               <div style=" font-size:18px; font-weight:bold; 
-        ">|</div>
-        {% endif %}
-        
+      {% if page_obj.has_previous %}
+      <li class="theme-button-1 n-button">
+        <a
+          class="page-link"
+          href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}"
+          aria-label="Previous"
+        >
+          <span aria-hidden="true">&laquo; Предыдущие</span>
+        </a>
+      </li>
+      <div style="font-size: 18px; font-weight: bold">|</div>
+      {% endif %} {% if page_obj.has_next %}
+      <li class="theme-button-right-1 n-button">
+        <a
+          class="page-link"
+          href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}"
+          aria-label="Next"
+        >
+          <span class="" aria-hidden="true">Следующие &raquo;</span>
+        </a>
+      </li>
 
-     
-        
-        
-
-        {% if page_obj.has_next %}
-            <li class="theme-button-right-1 n-button">
-                <a class="page-link" href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}" aria-label="Next">
-                    <span class="" aria-hidden="true">Следующие &raquo;</span>
-                </a>
-            </li>
-            
-                 <div style=" font-size:18px; font-weight:bold; 
-        ">|</div>
-           <div style=" font-size:18px; font-weight:bold; 
-        ">/\</div>
-        {% endif %}
-        
-
-          
+      <div style="font-size: 18px; font-weight: bold">|</div>
+      <div style="font-size: 18px; font-weight: bold">/\</div>
+      {% endif %}
     </ul>
-</nav>
+  </nav>
 
-
-
-
-{% endblock %}
-
+  {% endblock %}
+</div>
