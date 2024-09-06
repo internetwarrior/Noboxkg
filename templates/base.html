@@ -16,16 +16,23 @@
 <body>
      <style>
       .burger {
-        box-size: none;
-        background: var(--gold);
-        color: black;
-        font-size: 54px;
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: start;
-        gap: 6px;
-        padding: 20px;
+    all: unset;
+    color: white;
+    padding: 4px;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 56px;
+    width: 56px;
+    background: #ffd646;
+    box-shadow: var(--shadow);
+          
       }
 
       .burger .hey {
