@@ -1,9 +1,4 @@
-
-
-
-
 <div style="padding:0px; padding-left:6px;"class="search-bar">
-
 
 <style>
     .hey3 {
@@ -18,20 +13,6 @@
         animation: fadeIn 0.5s forwards;
     }
 
-    .sidebar {
-        width: 250px;
-        background-color: #fff;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-        height: 100svh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        position: absolute;
-        top: 0;
-        right: -700px;
-        border-radius: 8px;
-        animation: slideIn 0.2s forwards ease-in;
-    }
 
     .hey3.hidden {
         opacity: 0;
@@ -98,21 +79,6 @@ z-index:1000}
 </a>
     <style>
  
-        
-
-        .sidebar {
-            width: 250px;
-            background-color: #fff;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-            height:100svh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: absolute;
-            top:0;
-            right:0;
-            border-radius:8px;
-        }
         .hey3{
         position:fixed;
         height:100svh;
@@ -123,60 +89,13 @@ z-index:1000}
         z-index:10000;
         }
         
-        .sidebar .hey2{ 
-        padding: 20px;
-        
-        }
         .logo2 {
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
         }
 
-        .menu,
-        .footer-menu {
-            list-style: none;
-            padding: 0;
-        }
 
-        .menu li,
-        .footer-menu li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu li a,
-        .footer-menu li a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            display: block;
-            
-            width: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu li a:hover,
-        .footer-menu li a:hover {
-            color: #F39C12;
-        }
-
-        .menu li a i,
-        .footer-menu li a i {
-            margin-right: 10px;
-            font-size: 18px;
-        }
-
-        .contact-info {
-            font-size: 12px;
-            color: #999;
-            text-align: center;
-        }
-        .hidden{
-        display:none !important; 
-        }
     </style>
 <style>
 .burger{
@@ -228,31 +147,92 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div class="hey3 hidden">
-<div class="sidebar">
-        <div class="hey2">
-            <div class="logo2">
-               Menu
-            </div>
-            <ul class="menu">
-                <li><a href=" {% url 'home' %}" class="active"><i class="fas fa-home"></i>Главная страница</a></li>
-                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user"></i>Личный кабинет</a></li>
-                <li><a href="#"><i class="fas fa-bookmark"></i>Сохранённые объявления</a></li>
-                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user-plus"></i>Зарегистрироваться</a></li>
-            </ul>
-        </div>
-        <div class="hey2">
-            <ul class="footer-menu">
-                <li><a href="https://t.me/noboxkg"><i class="fas fa-newspaper"></i>Новости</a></li>
-                <li><a href="{% url 'privacy_page' %}"><i class="fas fa-file-contract"></i>Политика Конфиденциальности</a></li>
-                <li><a href="https://t.me/noboxrules"><i class="fas fa-info-circle"></i>Правила проекта</a></li>
-            </ul>
-            <div class="contact-info">
-                <p>Bishkek 2023-2024</p>
-                <p>info@nobox.kg</p>
-                <p>All rights reserved</p>
-            </div>
-        </div>
+<div class="slider"> 
+      <nav class="links"> 
+        <div class="profile"> 
+          <img 
+            src="https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.jpg" 
+            alt="picture" 
+          /> 
+          <div><b>Anonymous</b></div> 
+        </div> 
+ 
+        <ul> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">🏚️</div> 
+              <a href="#home">Главная страница</a> 
+            </div> 
+          </li> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">👤</div> 
+              <a href="#profile">Личный кабинет</a> 
+            </div> 
+          </li> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">📦</div> 
+              <a href="#saved">Сохранённые объявления</a> 
+            </div> 
+          </li> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">📝</div> 
+              <a href="#register">Зарегистрироваться</a> 
+            </div> 
+          </li> 
+          <hr /> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">🌍</div> 
+              <a href="#register">Language</a> 
+              <small class="param">RU</small> 
+            </div> 
+          </li> 
+          <li> 
+            <div class="icon-text"> 
+              <div class="icon">📍</div> 
+              <a href="#register">Location</a> 
+              <small class="param">Kyrgyzstan, Bishkek</small> 
+            </div> 
+          </li> 
+        </ul> 
+      </nav> 
+      <div 
+        style=" 
+          margin: auto; 
+          background: #ffd646; 
+          width: 64px; 
+          height: 64px; 
+          border-radius: 100%; 
+          color: white; 
+          display: flex; 
+          justify-content: center; 
+          align-items: center; 
+          font-size: 64px; 
+          padding: 4px; 
+          box-shadow: var(--shadow); 
+        " 
+      > 
+        + 
+      </div> 
+      <footer> 
+        <nav style="margin-bottom: 15px"> 
+          <ul> 
+            <li><a href="#news">Новости</a></li> 
+            <li><a href="#privacy-policy">Политика Конфиденциальности</a></li> 
+            <li><a href="#rules">Правила проекта</a></li> 
+          </ul> 
+        </nav> 
+        <small>Bishkek 2023-2024</small> 
+        <small>Email: <a href="mailto:info@nobox.kg">info@nobox.kg</a></small> 
+        <small>All rights reserved</small> 
+      </footer> 
     </div>
+
+
+
 </div>
  
 

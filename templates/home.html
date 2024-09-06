@@ -1,6 +1,11 @@
 {% extends 'base.html' %} {% block title %} Найти квартиру Бишкек{% endblock %}
 {% block content %}
 
+
+
+
+
+
 <style>
   .theme-1 {
     display: flex !important;
@@ -150,6 +155,33 @@
   .filter-option {
     scroll-snap-align: start !important;
   }
+    .slider {
+            width: 100%;
+            max-width: 600px;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: 100%;
+            aspect-ratio: 1/1;
+            scroll-snap-align: center;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
 </style>
 
 <form
@@ -203,16 +235,23 @@
     <div class="listing-grid">
       {% for post in posts %}
       <a href="{% url 'post_detail' post.id %}" class="theme-1 listing">
-        <!-- <img src="{{ post.picture }}" alt="Room" /> -->
-        <img src="/media/{{ post.picture }}" alt="Room" />
 
+<div class="slider">
+    <div class="slide">
+              <img  src="/media/{{ post.picture }}" alt="Room" />
+    </div>
+    <div class="slide">
+        <pre style="white-space:pre-wrap; padding:4px; font-size:16px;font:inherit;">{{ post.description|slice:":-25" }}...<button style="all:unset;" href="/post/ {{ post.id }}">Подробнее</button> </pre>
+    </div>
+</div>
         <div class="details">
           {% for tag in post.tags.all %}
           <div
             style="{% if tag.id == 3 %} background: -webkit-linear-gradient(323deg, #519be1,#f87293,#f9b78b);background: linear-gradient(323deg, #519be1,#f87293,#f9b78b); color:white; {% endif %}"
           >
-            <p>{% if tag.id == 2 %}🐺 {% endif %}{{ tag.name }}</p>
-          </div>
+            <p >{% if tag.id == 2 %}🐺 {% endif %}{{ tag.name }}</p>
+          
+</div>
           {% endfor %}
         </div>
         {% if post.price != 7777 %}

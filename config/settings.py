@@ -32,9 +32,9 @@ DEBUG = False
 
 
 
+ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
 
-#ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://nobox.kg',

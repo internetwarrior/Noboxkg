@@ -34,7 +34,7 @@ button,a{
 }
 
 main{
-margin:64px;
+margin-top:64px;
 }
 
 body {
@@ -197,12 +197,6 @@ input:checked + label::before {
 
 
 
-.listing img {
-  width: 100%;
-  max-height:250px;
-  border-radius: 5px;
-  object-fit:cover;
-}
 
 .listing .details {
   font-size: 18px;
