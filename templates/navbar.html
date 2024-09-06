@@ -1,102 +1,4 @@
-    <div style="padding: 0px; padding-left: 6px" class="search-bar">
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-        body {
-          font-family: "Roboto", sans-serif; /* Fallback to sans-serif if Roboto is not available */
-        }
-
-        .slider {
-          max-height: 100vh;
-          height: 100%;
-          max-width: 280px;
-          background-color: white;
-          width: 100%;
-          position: fixed;
-          top: 0px;
-          right: 0;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        ul {
-          list-style-type: none; /* Removes default bullet points */
-          padding: 0; /* Removes default padding */
-          margin: 0; /* Removes default margin */
-        }
-        .slider .profile {
-          gap: 20px;
-          padding: 20px;
-          display: flex;
-          align-items: center;
-          font-size: 18px;
-        }
-        .slider .profile img {
-          display: inline;
-          border-radius: 100%;
-          width: 64px;
-          height: 64;
-          background-color: darkorange;
-        }
-        .slider .main-button {
-          padding: 10px 20px 5px 20px;
-        }
-        .main-button button {
-          all: unset;
-          padding-bottom: 15px;
-        }
-        .links {
-          padding: 0 20px;
-        }
-        .links a {
-          text-decoration: none; /* Removes underline from links */
-          display: block;
-          color: black;
-          font-weight: 600;
-          font-size: 14px;
-          padding-bottom: 15px;
-        }
-        .links div {
-          font-family: "Noto Color Emoji", sans-serif;
-          font-weight: 400;
-          font-style: normal;
-        }
-        .icon-text {
-          display: flex; /* Aligns items horizontally */
-          align-items: start; /* Vertically centers items */
-          transition: background-color 0.3s; /* Smooth transition for hover effect */
-        }
-        .icon-text .icon {
-          margin-right: 15px;
-        }
-        hr {
-          border: 0; /* Removes default border */
-          height: 0.3px; /* Sets the height of the line */
-          background: black; /* Sets the color of the line */
-          opacity: 0.1;
-          margin-bottom: 15px;
-        }
-        .slider footer {
-          display: flex;
-          flex-direction: column;
-          padding: 20px;
-        }
-        footer a {
-          text-decoration: none;
-          color: black;
-        }
-        .slider footer small {
-          color: black;
-          opacity: 0.5;
-        }
-        .param {
-          margin-left: auto;
-        }
-      </style>
+<div style="padding: 0px; padding-left: 6px" class="search-bar">
       <style>
         .hey3 {
           position: fixed;
@@ -340,59 +242,209 @@
     </script>
 
     <div class="hey3">
-      <div class="slider">
-        <nav class="links">
-          <div class="profile">
+      <div
+        style="
+          max-height: 100vh;
+          height: 100%;
+          max-width: 280px;
+          background-color: white;
+          width: 100%;
+          position: fixed;
+          top: 0px;
+          right: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        "
+      >
+        <nav style="padding: 0 20px">
+          <div
+            class="profile"
+            style="
+              gap: 20px;
+              padding: 20px;
+              display: flex;
+              align-items: center;
+              font-size: 18px;
+            "
+          >
             <img
               src="https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.jpg"
               alt="picture"
+              style="
+                display: inline;
+                border-radius: 100%;
+                width: 64px;
+                height: 64px;
+                background-color: darkorange;
+              "
             />
             <div><b>Anonymous</b></div>
           </div>
 
-          <ul>
+          <ul style="list-style-type: none; padding: 0; margin: 0">
             <li>
-              <div class="icon-text">
-                <div class="icon">🏚️</div>
-                <a href="#home">Главная страница</a>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">🏚️</div>
+                <a
+                  href="#home"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Главная страница</a
+                >
               </div>
             </li>
             <li>
-              <div class="icon-text">
-                <div class="icon">👤</div>
-                <a href="#profile">Личный кабинет</a>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">👤</div>
+                <a
+                  href="#profile"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Личный кабинет</a
+                >
               </div>
             </li>
             <li>
-              <div class="icon-text">
-                <div class="icon">📦</div>
-                <a href="#saved">Сохранённые объявления</a>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">📦</div>
+                <a
+                  href="#saved"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Сохранённые объявления</a
+                >
               </div>
             </li>
             <li>
-              <div class="icon-text">
-                <div class="icon">📝</div>
-                <a href="#register">Зарегистрироваться</a>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">📝</div>
+                <a
+                  href="#register"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Зарегистрироваться</a
+                >
               </div>
             </li>
-            <hr />
+            <hr
+              style="
+                border: 0;
+                height: 0.3px;
+                background: black;
+                opacity: 0.1;
+                margin-bottom: 15px;
+              "
+            />
             <li>
-              <div class="icon-text">
-                <div class="icon">🌍</div>
-                <a href="#register">Language</a>
-                <small class="param">RU</small>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">🌍</div>
+                <a
+                  href="#register"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Language</a
+                >
+                <small class="param" style="margin-left: auto">RU</small>
               </div>
             </li>
             <li>
-              <div class="icon-text">
-                <div class="icon">📍</div>
-                <a href="#register">Location</a>
-                <small class="param">Kyrgyzstan, Bishkek</small>
+              <div
+                class="icon-text"
+                style="
+                  display: flex;
+                  align-items: start;
+                  transition: background-color 0.3s;
+                "
+              >
+                <div class="icon" style="margin-right: 15px">📍</div>
+                <a
+                  href="#register"
+                  style="
+                    text-decoration: none;
+                    display: block;
+                    color: black;
+                    font-weight: 600;
+                    font-size: 14px;
+                    padding-bottom: 15px;
+                  "
+                  >Location</a
+                >
+                <small class="param" style="margin-left: auto"
+                  >Kyrgyzstan, Bishkek</small
+                >
               </div>
             </li>
           </ul>
         </nav>
+
         <div
+          class="main-button"
           style="
             margin: auto;
             background: #ffd646;
@@ -410,17 +462,39 @@
         >
           +
         </div>
-        <footer>
+
+        <footer style="display: flex; flex-direction: column; padding: 20px">
           <nav style="margin-bottom: 15px">
-            <ul>
-              <li><a href="#news">Новости</a></li>
-              <li><a href="#privacy-policy">Политика Конфиденциальности</a></li>
-              <li><a href="#rules">Правила проекта</a></li>
+            <ul style="list-style-type: none; padding: 0; margin: 0">
+              <li>
+                <a href="#news" style="text-decoration: none; color: black"
+                  >Новости</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#privacy-policy"
+                  style="text-decoration: none; color: black"
+                  >Политика Конфиденциальности</a
+                >
+              </li>
+              <li>
+                <a href="#rules" style="text-decoration: none; color: black"
+                  >Правила проекта</a
+                >
+              </li>
             </ul>
           </nav>
-          <small>Bishkek 2023-2024</small>
-          <small>Email: <a href="mailto:info@nobox.kg">info@nobox.kg</a></small>
-          <small>All rights reserved</small>
+          <small style="color: black; opacity: 0.5">Bishkek 2023-2024</small>
+          <small style="color: black; opacity: 0.5"
+            >Email:
+            <a
+              href="mailto:info@nobox.kg"
+              style="text-decoration: none; color: black"
+              >info@nobox.kg</a
+            ></small
+          >
+          <small style="color: black; opacity: 0.5">All rights reserved</small>
         </footer>
       </div>
     </div>
