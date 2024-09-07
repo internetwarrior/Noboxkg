@@ -57,9 +57,12 @@
   .theme-1 {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
-    border-radius: 0px !important;
+    gap: 0px !important;
+    border-radius: 10px !important;
     position: relative !important;
+    padding:0px !important;
+    background:transparent !important;
+    box-shadow:none !important;
   }
 
   .theme-1 img {
@@ -85,7 +88,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    padding: 0px 4px;
+    padding: 10px;
+    background:white !important;
+    border-radius: 0 0 10px 10px;
   }
 
   .theme-1 .details div {
@@ -217,10 +222,11 @@
             width: 100%;
             aspect-ratio: 1/1;
             scroll-snap-align: center;
-            background-color: #e6e6e6;
+            background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding:0px !important;
         }
 
         .slide img {
@@ -266,7 +272,7 @@
   </div>
 </form>
 <div class="container">
-  <img
+<!--  <img
     style="
       position: fixed;
       top: 0px;
@@ -277,15 +283,21 @@
     "
     src="https://nobox.kg/static/bg.jpg"
   />
-
+-->
   <div class="row">
     <div class="listing-grid">
       {% for post in posts %}
       <a href="{% url 'post_detail' post.id %}" class="theme-1 listing">
 
 <div class="slider">
-    <div class="slide">
-              <img  src="/media/{{ post.picture }}" alt="Room" />
+    <div style="position:relative"  class="slide">
+    
+          <img style="margin:10px !important; border-radius:10px !important;"  src="/media/{{ post.picture }}" alt="Room" />
+<div style="flex-wrap:wrap;position:absolute;display:flex; gap:10px;padding:20px; bottom:0px;left:0;color:white;">       
+   {% for tag in post.tags.all %}
+         <p style="font-size:24px;font-weight:bold;">{{ tag }}|</p>
+   {% endfor %}
+</div>	
     </div>
     <div class="slide">
   
@@ -293,9 +305,7 @@
         <div class="box div1">
           <div style="position: relative">
             <img
-              src="
-              https://wallpapers.com/images/featured/cool-profile-picture-87h46gcobjl5e4xu.jpg
-              "
+              src="https://nobox.kg/static/profile_icon.jpg"
               alt=""
             />
             <div
@@ -312,11 +322,11 @@
             ></div>
           </div>
         </div>
-        <pre class="box div2" style="font-inherit; padding:20px !important; color:rgba(0,0,0,0.8); font-size:14px; 
+        <pre class="box div2" style="font-inherit; padding:20px !important; color:rgba(0,0,0,0.8); font-size:15px; 
                 white-space: pre-wrap; /* Maintain whitespace and line breaks */
             overflow: hidden; /* Hide overflowing content */
             text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
-               ">
+               "><br/>
    {{ post.description|slice:"0:-25" }}...
         </pre>
         <div class="box div3">
@@ -337,19 +347,7 @@
        
 <!--       <pre style="white-space:pre-wrap; padding:4px; font-size:16px;font:inherit;"><button style="all:unset;" href="/post/ {{ post.id }}">Подробнее</button> </pre> -->
    
-    </div>
-</div>
-        <div class="details">
-          {% for tag in post.tags.all %}
-          <div
-            style="{% if tag.id == 3 %} background: -webkit-linear-gradient(323deg, #519be1,#f87293,#f9b78b);background: linear-gradient(323deg, #519be1,#f87293,#f9b78b); color:white; {% endif %}"
-          >
-            <p >{% if tag.id == 2 %}🐺 {% endif %}{{ tag.name }}</p>
-          
-</div>
-          {% endfor %}
-        </div>
-        {% if post.price != 7777 %}
+  {% if post.price != 7777 %}
         <div class="price">
           <div id="price">
             {% if post.price == 0%} Договор {% else %} {{post.price}} 
@@ -357,14 +355,15 @@
           </div>
         </div>
         {% endif %}
-      </a>
-
-      {% endfor %}
     </div>
+
+</div>
+
   </div>
-  {% for post in posts %}
-  <!-- Your post display logic here -->
+</a>
   {% endfor %}
+
+  <!-- Your post display logic here -->
   <script>
     window.onload = function () {
       // Function to check and set filter checkboxes based on URL parameters
