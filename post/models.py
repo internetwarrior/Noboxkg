@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+from django.template.defaultfilters import timesince
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
