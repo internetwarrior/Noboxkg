@@ -3,6 +3,39 @@
 {% block title %}{{ post.name }}{% endblock %}
 
 {% block content %}
+
+ <style>
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        cursor: pointer; /* Make cursor indicate clickable area */
+      }
+      .modal img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        cursor: default; /* Prevent cursor change over image */
+      }
+      .modal.active {
+        display: flex;
+      }
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    </style>
 <div class="modal" id="modal">
       <span class="close" id="close">&times;</span>
       <img
@@ -223,4 +256,32 @@ box-shadow: var(--shadow);
     </h3>
 </div>
 </footer>
+
+          <script>
+      window.onload = function () {
+        const openTrigger = document.querySelector(".Hello");
+        const modal = document.getElementById("modal");
+        const closeBtn = document.getElementById("close");
+
+        openTrigger.addEventListener("click", function () {
+          modal.classList.add("active");
+        });
+
+        function closeModal() {
+          modal.classList.remove("active");
+        }
+
+        // Close modal when clicking on background
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        document
+          .getElementById("modalImage")
+          .addEventListener("click", closeModal);
+      };
+    </script>
 {% endblock %}
