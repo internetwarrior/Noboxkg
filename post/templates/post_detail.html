@@ -3,7 +3,16 @@
 {% block title %}{{ post.name }}{% endblock %}
 
 {% block content %}
-
+<div class="modal" id="modal">
+      <span class="close" id="close">&times;</span>
+      <img
+<!--         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s" -->
+       src="/media/{{ post.picture }}" alt="Post Image" 
+    
+    alt="Modal Image"
+        id="modalImage"
+      />
+    </div>
 
 <style>
 .more-info {
@@ -89,12 +98,16 @@ box-shadow: var(--shadow);
         
         >
         
-        <img  
+        <img 
+            class="Hello"
         style="
         width: 100%;
         max-height: 250px;
         object-fit: cover;
-        "
+       cursor: pointer;
+            "
+            alt="Click to open modal"
+       
         src="/media/{{ post.picture }}" alt="Post Image"
         >
        
