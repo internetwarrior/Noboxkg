@@ -36,4 +36,9 @@ class Post(models.Model):
     def __str__(self):
         return f"Post ID: {self.id} - {self.description[:20]}"
 
+    
+    def time_since_posted(self):
+        # Use timesince to calculate the difference from now
+        return timesince(self.created) + ' назад'
+
 
