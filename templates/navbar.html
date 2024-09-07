@@ -199,21 +199,28 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document
-        .querySelector(".hey3")
-        .addEventListener("click", function (event) {
-          if (event.target === this) {
-            this.classList.toggle("hidden");
-          }
-        });
-
-      document
-        .querySelector(".burger")
-        .addEventListener("click", function () {
-          document.querySelector(".hey3").classList.remove("hidden");
-        });
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector(".hey3")
+    .addEventListener("click", function (event) {
+      if (event.target === this) {
+        this.classList.toggle("hidden");
+      }
     });
+
+  document
+    .querySelectorAll(".burger")
+    .forEach((burger) =>
+      burger.addEventListener("click", function () {
+        document.querySelector(".hey3").classList.remove("hidden");
+      })
+    );
+
+  document.querySelector(".close").addEventListener("click", function () {
+    document.querySelector(".hey3").classList.add("hidden");
+  });
+});
+
   </script>
 
   <div class="hey3 hidden">
@@ -291,9 +298,9 @@
                 transition: background-color 0.3s;
               "
             >
-              <div class="icon" style="margin-right: 15px">👤</div>
+              <div class="icon" style="margin-right: 15px">🔥</div>
               <a
-                href="https://t.me/a1ina_bot?start=profile"
+                href="https://www.reddit.com/r/Nobox/"
                 style="
                   text-decoration: none;
                   display: block;
@@ -302,11 +309,11 @@
                   font-size: 14px;
                   padding-bottom: 15px;
                 "
-                >Личный кабинет</a
+                >Новости</a
               >
             </div>
           </li>
-          <li>
+<!--          <li>
             <div
               class="icon-text"
               style="
@@ -353,7 +360,7 @@
                 >Зарегистрироваться</a
               >
             </div>
-          </li>
+          </li> -->
           <hr
             style="
               border: 0;
@@ -383,7 +390,7 @@
                   font-size: 14px;
                   padding-bottom: 15px;
                 "
-                >Language</a
+                >Язык/Lang</a
               >
               <small class="param" style="margin-left: auto">RU</small>
             </div>
@@ -408,7 +415,7 @@
                   font-size: 14px;
                   padding-bottom: 15px;
                 "
-                >Location</a
+                >Локация</a
               >
               <small class="param" style="margin-left: auto"
                 >Kyrgyzstan, Bishkek</small
@@ -417,12 +424,35 @@
           </li>
         </ul>
       </nav>
+<div style="height:100%; position:relative;">
+<nav style="position:absolute;top:50%;left:-32px;">
         <div
     class="main-button"
     onclick="window.location.href='https://t.me/a1ina_bot?start=post';"
     style="
-        margin: auto;
         background: #ffd646;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%; /* Changed to 50% for proper circular shape */
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 42px; /* Adjusted font size for better fit */
+        padding: 4px;
+            -webkit-tap-highlight-color: transparent !important;
+
+outline: none !important;
+        box-shadow: var(--shadow, 0px 4px 8px rgba(0, 0, 0, 0.2)); /* Fallback shadow */
+        cursor: pointer; /* Added cursor style */
+    ">
+    +
+</div>
+ <div
+    class="close"
+    style="
+        background: black;
+        margin-top:15px;
         width: 64px;
         height: 64px;
         border-radius: 50%; /* Changed to 50% for proper circular shape */
@@ -438,31 +468,32 @@ outline: none !important;
         box-shadow: var(--shadow, 0px 4px 8px rgba(0, 0, 0, 0.2)); /* Fallback shadow */
         cursor: pointer; /* Added cursor style */
     ">
-    +
+    >
 </div>
-
+</nav>
+</div>
 
       
       <footer style="display: flex; flex-direction: column; padding: 20px">
         <nav style="margin-bottom: 15px">
           <ul style="list-style-type: none; padding: 0; margin: 0">
-            <li>
-              <a href="https://t.me/noboxkg" style="text-decoration: none; color: black"
+<!--            <li>
+              <a href="https://www.reddit.com/r/Nobox/" style="text-decoration: none; color: black"
                 >Новости</a
               >
-            </li>
+            </li> -->
             <li>
               <a
-                href="#privacy-policy"
+                href="https://nobox.kg/privacy"
                 style="text-decoration: none; color: black"
                 >Политика Конфиденциальности</a
               >
-            </li>
+            </li><!--
             <li>
               <a href="https://t.me/noboxlobby" style="text-decoration: none; color: black"
                 >Правила проекта</a
               >
-            </li>
+            </li>-->
           </ul>
         </nav>
         <small style="color: black; opacity: 0.5">Bishkek 2023-2024</small>
