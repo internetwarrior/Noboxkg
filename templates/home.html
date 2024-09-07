@@ -315,7 +315,7 @@
           </div>
         </div>
         <div class="box div2">
-        {{post.description[:-25]}}
+       {{ post.description|slice_string:25 }}
         </div>
         <div class="box div3">
           <p style="font-size: 18px; font-weight: 600">С уважением, Кайрат</p>
