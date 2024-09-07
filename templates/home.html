@@ -312,7 +312,11 @@
             ></div>
           </div>
         </div>
-        <pre class="box div2" style="font-inherit; padding-top:10px; white-space:break;">
+        <pre class="box div2" style="font-inherit; padding-top:10px; 
+                white-space: pre-wrap; /* Maintain whitespace and line breaks */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
+               ">
    {{ post.description|slice:"0:-25" }}
         </pre>
         <div class="box div3">
@@ -324,6 +328,7 @@
               color: white;
               padding: 6px;
               border-radius: 2px;
+                 
             "
             >Подробнее</small
           >
