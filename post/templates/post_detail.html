@@ -130,13 +130,18 @@ box-shadow: var(--shadow);
         >
         
         <img 
-            class="Hello"
+        class="Hello"
         style="
         width: 100%;
         max-height: 250px;
         object-fit: cover;
-       cursor: pointer;
-            "
+        cursor: pointer;
+        outline: none; /* Remove focus outline */
+        border: none; /* Remove any border */
+        box-shadow: none; /* Remove any box shadow */
+        -webkit-appearance: none; /* Remove default webkit styles */
+        user-select: none; /* Prevent text selection */
+    "
             alt="Click to open modal"
        
         src="/media/{{ post.picture }}" alt="Post Image"
