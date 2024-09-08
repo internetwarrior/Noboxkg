@@ -289,11 +289,11 @@
       {% for post in posts %}
       <a href="{% url 'post_detail' post.id %}" class="theme-1 listing">
 
-<div class="slider">
+      <div class="slider">
     <div style="position:relative"  class="slide">
     
-          <img style="margin:10px !important; border-radius:10px !important;"  src="/media/{{ post.picture }}" alt="Room" />
-<div style=" background:linear-gradient(to top, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0)) !important; border-radius:0 0 10px 10px; flex-wrap:wrap;position:absolute;display:flex; gap:10px;padding:20px; bottom:0px;left:0;color:white;">       
+          <img style="margin:0px !important; border-radius:10px !important;"  src="/media/{{ post.picture }}" alt="Room" />
+<div style="border-radius:0 0 10px 10px; flex-wrap:wrap;position:absolute;display:flex; gap:10px;padding:20px; bottom:0px;left:0;color:white;">       
    {% for tag in post.tags.all %}
          <p style="font-size:24px;font-weight:bold;">{{ tag }}|</p>
    {% endfor %}
@@ -334,14 +334,11 @@
           <br />
           <small
             style="
-              background-color: black;
-              color: white;
-              padding: 6px;
-              border-radius: 2px;
                  
             "
-            >Подробнее</small
+            >Опубликовано: <br/>{{ post.time_since_posted }}</small
           >
+         
         </div>
       </div>
        
@@ -357,11 +354,9 @@
         {% endif %}
 
 </div>
-
 </div>
 </a>
   {% endfor %}
-</div>
   <!-- Your post display logic here -->
   <script>
     window.onload = function () {
