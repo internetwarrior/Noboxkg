@@ -76,8 +76,11 @@ def user_exists(user_id):
 
 
 
-
 @dp.message_handler(commands=['start'])
+async def start(message: types.Message):
+    await message.answer("Я снова тут! 🙋‍♀️\nЯ на все внимание 😄\n\nДобро пожаловать в Nobox!\nИщем квартиру? Или что-то размещаешь? 😏\n\nОтправь:\nцена/описание/контакты/\nфотку с хештегом #nobox\n\nИ модераторы проверят и загрузят на сайт\n\nВот сюда: @arenda_kvar_bishkek")
+
+@dp.message_handler(commands=['labron'])
 async def start_registration(message: types.Message):
     user_id = message.from_user.id
     global user_posts

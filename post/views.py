@@ -126,8 +126,8 @@ def get_or_create_user_session(request, post=None):
     return new_session
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    session = get_or_create_user_session(request,post)
-    print(session)
+#    session = get_or_create_user_session(request,post)
+#    print(session)
     return render(request, 'post_detail.html', {'post': post,"dev":"конец",},)
 
 

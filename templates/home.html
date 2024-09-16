@@ -238,13 +238,13 @@
 </style>
 
 <form
-  style=""
+  style=" background:#fff;margin-top:0;padding-top:0;padding-left:50px;"
   class="tag-filter"
   method="GET"
   action="{% url 'home' %}"
   class="filter-form horizjontal-div"
 >
-  <div class="filter-bar horizontal-div">
+  <div style="padding-left:20px !important;" class="filter-bar horizontal-div">
     {% for tag in tags.all %} {% if not tag.is_admins %}
     <div class="filter-option">
       <input
