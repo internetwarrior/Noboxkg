@@ -1,10 +1,10 @@
 <style>
 .search-bar-remake{
 position:fixed;
-left:0;
+left:0px;
 z-index:9999;
-top:10px;
-background:rgba(255,255,255,0.9);
+top:0px;
+width:100%;
 }
 </style>
 
@@ -68,14 +68,19 @@ background:rgba(255,255,255,0.9);
 
     <style>
       .logo {
-width:auto;
-writing-mode: vertical-lr;
-      display:inline-block;
+max-height:56px;
+margin:auto;
+width:100%;
+      display:flex;
+align-items:center;
+justify-content:center;
         padding: 10px 10px 10px 0;
-        color: black;
+        color: white;
+        background: rgba(255,255,255,0.9) !important;
         box-sizing: 0px;
         font-size:36px;
         line-height: 80%;
+padding:0 !important;
         font-weight: bold;
       }
       .search-bar {
@@ -94,8 +99,7 @@ writing-mode: vertical-lr;
    
 
     <a style="" class="logo" href="{% url 'home' %}">
-<!--      <svg
-        style="transform:rotate(-90deg);"
+      <svg
         width="145"
         height="56"
         viewBox="0 0 145 56"
@@ -128,8 +132,7 @@ writing-mode: vertical-lr;
           d="M94.9678 16.2611C95.2391 15.9066 95.66 15.6986 96.1064 15.6986L114.014 15.6986C114.469 15.6986 114.897 15.9146 115.167 16.2807L116.225 17.7143C116.924 18.6607 116.248 19.9994 115.072 19.9994H95.0096C93.8219 19.9994 93.1493 18.6379 93.871 17.6947L94.9678 16.2611Z"
           fill="#0E0E0E"
         />
-      </svg>-->
-NOBOX
+      </svg>
     </a>
     <style>
       .sidebar {

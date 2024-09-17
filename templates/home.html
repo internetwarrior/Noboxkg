@@ -238,15 +238,15 @@
 </style>
 
 <form
-  style=" background:#fff;margin-top:0;padding-top:0;padding-left:50px;"
+  style=" background:#fff;margin-top:0;padding-top:0;padding-left:0px;"
   class="tag-filter"
   method="GET"
   action="{% url 'home' %}"
   class="filter-form horizjontal-div"
 >
-  <div style="padding-left:20px !important;" class="filter-bar horizontal-div">
+  <div style="margin-left: 20px !important;" class="filter-bar horizontal-div">
     {% for tag in tags.all %} {% if not tag.is_admins %}
-    <div class="filter-option">
+    <div  class="filter-option">
       <input
         type="checkbox"
         id="{{ tag.id }}"
@@ -254,14 +254,20 @@
         value="{{ tag.id }}"
         class="filter-input"
       />
-      <label for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
+      <label
+        style="
+font-size:16px;
+font-weight:light;
+ border-radius:8px; color: gray;"
+
+        for="{{ tag.id }}" class="filter-label"> {{ tag.name }}</label>
     </div>
     {% endif %} {% endfor %}
   </div>
   <div class="text-center">
     <div class="he">
       <a
-        style="outline: 1px solid gray; color: gray; background: transparent"
+        style="outline:1px solid gray ;color: gray; background: transparent"
         href="{% url 'home' %}"
         type="submit"
         class="n-button"
