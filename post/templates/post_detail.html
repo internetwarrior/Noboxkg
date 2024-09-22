@@ -122,18 +122,34 @@ box-shadow: var(--shadow);
 
         <div 
         style="
-        border-radius:8px 8px 0px 0px;
+        border-radius:10px !important;
         overflow:hidden;
         position:relative;
+margin-bottom:10px !important;
         "
         
         >
-        
+<!--<div
+style=" position:absolute; color:white; font-weight:bold;
+font-size:24px;
+top:24px;
+right:0;
+
+"
+ class="label">Цена: </div>
+    {% if post.price == 0%}
+    Договор
+    {% else %}
+    {{ post.price }}сом
+
+    {% endif %}
+      </div>        -->
         <img 
         class="Hello"
         style="
         width: 100%;
-        max-height: 250px;
+        max-height: 100%;
+        aspect-ratio:1;
         object-fit: cover;
         cursor: pointer;
         outline: none; /* Remove focus outline */
@@ -147,25 +163,32 @@ box-shadow: var(--shadow);
        
         src="/media/{{ post.picture }}" alt="Post Image"
         >
-       
+       <div style="position:absolute; color: white;
+font-weight:bold; font-size:32px; top:12px; left:12px;"
+onclick="window.history.back()"
+class="label">
+  {% if post.price == 0 %}
+    Договор
+  {% else %}
+    {{ post.price }} сом
+  {% endif %}
+</div>
          </div>
         
       
        
         <div style="
+        color:gray;
         display:flex;
         width:100%;
         gap:4px;
         flex-wrap:wrap;
         margin-top:10px;
         ">
+        Теги:<br>
         {% for tag in post.tags.all %}
-        
-        <div style="
-        padding: 5px 10px;
-        background:var(--gold);
-        "> 
-         {{ tag.name }}
+        <div style="color:gray"> 
+         #{{ tag.name }}
         </div>
         
            
@@ -175,25 +198,41 @@ box-shadow: var(--shadow);
     
     
     <div style="
-    margin-top:20px;  
+    margin-top:10px;  
 ">  
 
     
-    <div class="label">Цена: </div>
+ <!--   <div style="display:none; opacity:0;"  class="label">Цена: </div>
     {% if post.price == 0%}
     Договор
     {% else %}
     {{ post.price }}сом
     
     {% endif %}
-      </div>
-      <br/>
+      </div> -->
+      
     <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
  
-      <div class="label">Особые примечания:</div>
-     {{ post.description }}</pre>
+   <!--      <div class="label">Особые примечания:</div> -->
+<b>Уважаемый пользователь Nobox●Kg,</b>
+
+Благодарим вас за участие в проекте и его тестировании. К сожалению, мы вынуждены сообщить, что проект приостановлен и будет отправлен в техническую работу на неопределённое время.
+
+В наших планах — доработать систему монетизации, чтобы вернуться с улучшенной версией.
+
+<b>Статус:</b> Потрачено ● Wasted
+
+Желаем вам удачи в поиске!
+
+С уважением,<br>
+Команда Nobox●Kg
+
+Контакты: info@nobox.kg
+
+
+</pre>
     
-    
+ <!--    
       <div>
     <br/>
     <form style="
@@ -227,7 +266,7 @@ box-shadow: var(--shadow);
 </label>
     </div>
     </form>
-    
+    -->
     <footer style="all: unset;">
     <div style="
     width: 100%;

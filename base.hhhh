@@ -70,21 +70,11 @@ a:active {
     }
 }
 </style>
-
-<main style="padding-top: 0; 
-{% if not '/post/' in request.path %}
-margin-top: 56px; 
-{% else %}
-margin-top: 0; 
-{% endif %}
-">
-    {% block content %}
-    {% endblock %}
-</main>
-
-<style>
-footer{
-margin-top:100px;
+<
+	
+	tyle>
+footer{=	":
+margin-top:100px-;
 display: flex;
 width:100%
 justify-content:center;

@@ -6,6 +6,38 @@
 
 
 <style>
+
+
+.heye {
+    position: relative;
+}
+.heye::before{
+z-index:1000;
+position:absolute;
+content:'▼';
+bottom: 0px;
+padding:10px 40px 0px 0px;
+font-size:16px;
+width:100%;
+text-align:center;
+#font-weight:bold;
+color:var(--gold);
+box-shadow:0 0 50px white;
+background: linear-gradient(to top, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.3));
+}
+.heye::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-indext:100;
+    box-shadow: inset 0 -5px 15px 0px #fff;
+    pointer-events: none; /* Ensures the shadow doesn't interfere with content interaction */
+}
+
+
        .parent {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -238,7 +270,7 @@
 </style>
 
 <form
-  style=" background:#fff;margin-top:0;padding-top:0;padding-left:0px;"
+  style=" background:#fff;margin-top:0px;padding-top:0px;padding-left:0px;"
   class="tag-filter"
   method="GET"
   action="{% url 'home' %}"
@@ -328,13 +360,17 @@ font-weight:light;
             ></div>
           </div>
         </div>
-        <pre class="box div2" style="font-inherit; padding:20px !important; color:rgba(0,0,0,0.8); font-size:15px; 
-                white-space: pre-wrap; /* Maintain whitespace and line breaks */
-            overflow: hidden; /* Hide overflowing content */
-            text-overflow: ellipsis; /* Display ellipsis (...) for overflowed text */
-               "><br/>
+<pre class="box div2 heye" style="font-inherit; padding:20px !important;
+ color:rgba(0,0,0,0.8); font-size:15px;
+ background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%),
+             white; /* Gradient overlay */
+ white-space: pre-wrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ position: relative;
+">
    {{ post.description|slice:"0:-25" }}...
-        </pre>
+</pre>	
         <div class="box div3">
           <p style="font-size: 16px; font-weight: 600; color:rgba(0,0,0,0.9);">С уважением, Рекламодатель</p>
           <br />
