@@ -5,6 +5,17 @@
 {% block content %}
 
  <style>
+.nobox-button{
+margin-left:auto;
+margin-right:12px;
+all:unset;
+color:gray;
+padding:10px;
+border-radious:10px;
+background-color:var(--gold);
+
+}
+
       .modal {
         display: none;
         position: fixed;
@@ -164,38 +175,39 @@ right:0;
         src="/media/{{ post.picture }}" alt="Post Image"
         >
        <div style="position:absolute; color: white;
-font-weight:bold; font-size:32px; top:12px; left:12px;"
+font-weight:bold; font-size:32px; top:12px; right:12px;"
 onclick="window.history.back()"
 class="label">
   {% if post.price == 0 %}
     Договор
   {% else %}
-    {{ post.price }} сом
+{{ post.price|floatformat:0 }} сом
   {% endif %}
 </div>
-         </div>
-        
-      
-       
         <div style="
+pointer-events:none;
         color:gray;
         display:flex;
         width:100%;
         gap:4px;
         flex-wrap:wrap;
         margin-top:10px;
+        position: absolute;
+        bottom:0;left:0;
+padding:12px; color:white
         ">
         Теги:<br>
         {% for tag in post.tags.all %}
-        <div style="color:gray"> 
+        <div style="color:white"> 
          #{{ tag.name }}
         </div>
-        
-           
+     
         {% endfor %}
+ #X_x
     </div>
     
     
+         </div>
     
     <div style="
     margin-top:10px;  
@@ -210,7 +222,9 @@ class="label">
     
     {% endif %}
       </div> -->
-      
+<button class="nobox-button" onclick="navigator.share({ url: window.location.href })">
+  Сновюоксить X_x
+</button>      
     <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
  
    <!--      <div class="label">Особые примечания:</div> -->
