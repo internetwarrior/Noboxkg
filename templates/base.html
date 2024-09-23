@@ -19,16 +19,142 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7687216411864126"
      crossorigin="anonymous"></script>
 </head>
-<body>
+<body id="top-1">
+<style>
+.scroll-navigator{
+font-size:32px;
+z-index:9999;
+position:fixed;
+bottom:24px;
+right:24px;
+display:flex;
+flex-direction:column;
+}
+</style>
+<!---<script>
+window.addEventListener('load', function() {
+    let lastScrollY = window.scrollY;
+    let header = document.querySelector('header');
+
+    function animateHeader(show) {
+        header.style.transition = 'transform 0.5s';
+        if (show) {
+            header.style.transform = 'translateY(0)';
+        } else {
+            header.style.transform = 'translateY(-100%)';
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > lastScrollY) {
+            animateHeader(false); // Hide on scroll down
+        } else {
+            animateHeader(true);  // Show on scroll up
+        }
+        lastScrollY = window.scrollY;
+    });
+});
+</script>
+<script>
+window.addEventListener('load', function() {
+    let lastScrollY = window.scrollY;
+    let header = document.querySelector('header');
+
+    function animateHeader(show) {
+        header.style.position = 'fixed';
+        header.style.top = '0';
+        header.style.width = '100%';
+        header.style.transition = 'transform 0.5s';
+
+        if (show) {
+            header.style.transform = 'translateY(0)';
+        } else {
+            header.style.transform = 'translateY(-100%)';
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > lastScrollY) {
+            animateHeader(false); // Hide on scroll down
+        } else {
+            animateHeader(true);  // Show on scroll up
+        }
+        lastScrollY = window.scrollY;
+    });
+});
+</script> -->
+<script>
+window.addEventListener('load', function() {
+    let lastScrollY = window.scrollY;
+    let target = document.getElementById('target-2');
+
+    function animateTarget(show) {
+        target.style.transition = 'transform 0.5s, opacity 0.5s';
+        if (show) {
+            target.style.transform = 'translateY(0)';
+            target.style.opacity = '1';
+        } else {
+            target.style.transform = 'translateY(-100%)';
+            target.style.opacity = '0';
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > lastScrollY) {
+            animateTarget(false); // Hide on scroll down
+        } else {
+            animateTarget(true);  // Show on scroll up
+        }
+        lastScrollY = window.scrollY;
+    });
+});
+</script>
+
+<script>
+window.addEventListener('load', function() {
+    let lastScrollY = window.scrollY;
+    let target = document.getElementById('target');
+
+    function animateTarget(show) {
+        target.style.transition = 'transform 0.5s, opacity 0.5s';
+        if (show) {
+            target.style.transform = 'translateY(0)';
+            target.style.opacity = '1';
+        } else {
+            target.style.transform = 'translateY(-100%)';
+            target.style.opacity = '0';
+        }
+    }
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > lastScrollY) {
+            animateTarget(false); // Hide on scroll down
+        } else {
+            animateTarget(true);  // Show on scroll up
+        }
+        lastScrollY = window.scrollY;
+    });
+});
+</script>
+
+
+<div id="target" class="scroll-navigator">
+<!---<a href="#top-1">⬆️</a>-->
+<a href="#bottom-1">
+<svg width="64px" height="64px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm0 47L16 33.695h10.857V15h10.285v18.695H48L32 49z" fill="#fff"></path></g></svg>
+</a>
+
+</div>
+
+
      <style>
 
 
 
       .burger {
-    
+    margin:auto;
     color: rbga(0,0,0,0.9);
     padding: 4px;
-    position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 9999;
@@ -48,7 +174,7 @@
       }
 
     </style>
-    <header>
+    <header id="target-22">
         {% include 'navbar.html' %}
     </header>
     
@@ -93,6 +219,8 @@ padding:12px;
 }
 
 </style>
+
+
       <div class="burger">
         <div></div>
         <div class="font-size:42px;">☰</div>
@@ -102,7 +230,7 @@ padding:12px;
 
  
 <!-- Latest compiled and minified JavaScript -->
-<footer class="bg-light text-center py-3 mt-4">
+<footer id="bottom-1" class="bg-light text-center py-3 mt-4">
     <div class="">
         {% if user.is_authenticated %}
             <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
@@ -113,6 +241,7 @@ padding:12px;
        
         {% endif %}
          <p>&copy; 2024 Nobox.kg</p>
+                <p>experimental-build 0.7</p>
     </footer>
     
     <div class="hey3 hidden">
@@ -138,6 +267,7 @@ padding:12px;
                 <p>Bishkek 2023-2024</p>
                 <p>info@nobox.kg</p>
                 <p>All rights reserved</p>
+
             </div>
         </div>
     </div>
