@@ -174,7 +174,7 @@ right:0;
        
         src="/media/{{ post.picture }}" alt="Post Image"
         >
-       <div style="position:absolute; color: white;
+       <div style="position:absolute; color: white;width:auto;
 font-weight:bold; font-size:32px; top:12px; right:12px;"
 onclick="window.history.back()"
 class="label">
@@ -223,12 +223,12 @@ padding:12px; color:white
     {% endif %}
       </div> -->
 <button class="nobox-button" onclick="navigator.share({ url: window.location.href })">
-  Сновюоксить X_x
+  Share X_x <in-Dev>
 </button>      
     <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
- 
+ {{ post.description }}
    <!--      <div class="label">Особые примечания:</div> -->
-<b>Уважаемый пользователь Nobox●Kg,</b>
+<!--<b>Уважаемый пользователь Nobox●Kg,</b>
 
 Благодарим вас за участие в проекте и его тестировании. К сожалению, мы вынуждены сообщить, что проект приостановлен и будет отправлен в техническую работу на неопределённое время.
 
@@ -243,10 +243,10 @@ padding:12px; color:white
 
 Контакты: info@nobox.kg
 
-
+-->
 </pre>
     
- <!--    
+ 
       <div>
     <br/>
     <form style="
@@ -280,7 +280,7 @@ padding:12px; color:white
 </label>
     </div>
     </form>
-    -->
+
     <footer style="all: unset;">
     <div style="
     width: 100%;

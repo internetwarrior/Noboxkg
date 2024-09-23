@@ -64,7 +64,7 @@ async def lobby(user_id):
     await bot.send_message(user_id,
     "Добро пожаловать в Nobox!\n"
     "Ищем квартиру? Или что-то размещаешь? 😏\n\n"
-    "Наш телеграм Группа: @Nobox_kg\n\n"
+    "Наш телеграм Группа: @renting_kg\n\n"
     "📑 Объявлений пока: 0\n"
     "👩‍💻 На проверке: 0\n"
     "💫 Просмотров всего: 0",
@@ -78,7 +78,7 @@ def user_exists(user_id):
 
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    await message.answer("Я снова тут! 🙋‍♀️\nЯ на все внимание 😄\n\nДобро пожаловать в Nobox!\nИщем квартиру? Или что-то размещаешь? 😏\n\nОтправь:\nцена/описание/контакты/\nфотку с хештегом #nobox\n\nИ модераторы проверят и загрузят на сайт\n\nВот сюда: @arenda_kvar_bishkek")
+    await message.answer("Я снова тут! 🙋‍♀️\nЯ на все внимание 😄\n\nДобро пожаловать в Nobox!\nИщем квартиру? Или что-то размещаешь? 😏\n\nОтправь:\nцена/описание/контакты/\nфотку с хештегом #nobox\n\nИ модераторы проверят и загрузят на сайт\n\nВот сюда: @renting_kg")
 
 @dp.message_handler(commands=['labron'])
 async def start_registration(message: types.Message):
@@ -235,6 +235,7 @@ async def handle_email(message: types.Message):
 @dp.callback_query_handler(lambda c: c.data == 'post_ad')
 async def start_post_creation(callback_query: types.CallbackQuery):
     user_id = callback_query.from_user.id
+
     if user_id in user_posts and user_posts[user_id] is not None:
         await callback_query.answer("Введи цену!")
         return
