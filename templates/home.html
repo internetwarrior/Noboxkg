@@ -479,9 +479,9 @@ font-weight:light;
 
 <!--      <div style="font-size: 18px; font-weight: bold">|</div>-->
       {% endif %} {% if page_obj.has_next %}
-      <li class="theme-button-right-1 n-button">
+      <li class=" n-button">
         <a
-          class="n-button"
+          
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}"
           aria-label="Next"
         >
