@@ -1,106 +1,88 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    <title>{{ post.name }}</title>
-    
-    <!-- Open Graph tags -->
-    <meta property="og:title" content="{{ post.name }}" />
-    <meta property="og:description" content="{{ post.description|truncatewords:30 }}" />
-    <meta property="og:image" content="/media/{{ post.picture }}" />
-    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-    <meta property="og:type" content="article" />
-    
-    <!-- Twitter Card tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ post.name }}" />
-    <meta name="twitter:description" content="{{ post.description|truncatewords:30 }}" />
-    <meta name="twitter:image" content="/media/{{ post.picture }}" />
-{% endblock %}
-
-{% block title %}
-{% with tags=post.tags.all %}
-  {% if tags %}
-    {{ tags|join:", " }}  <!-- Join tag names with a comma -->
-  {% else %}
-    No Tags
-  {% endif %}
-{% endwith %}
-{% endblock %}
+{% block title %}{{ post.name }}{% endblock %}
 
 {% block content %}
+
+ <style>
+.nobox-button{
+margin-left:auto;
+margin-right:12px;
+all:unset;
+color:gray;
+padding:10px;
+border-radious:10px;
+background-color:var(--gold);
+
+}
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        cursor: pointer; /* Make cursor indicate clickable area */
+      }
+      .modal img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        cursor: default; /* Prevent cursor change over image */
+      }
+      .modal.active {
+        display: flex;
+      }
+      .close2 {
+        position: absolute;
+        right: 10px;
+        color: white;
+       top:10px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    </style>
+<div class="modal" id="modal">
+      <span class="close2" id="close">&times;</span>
+      <img
+            src="/media/{{ post.picture }}"
+            alt="Modal Image"
+            id="modalImage"
+      />
+    </div>
+
 <style>
-/* Global styles */
-.nobox-button {
-    margin-left: auto;
-    margin-right: 12px;
-    all: unset;
-    color: gray;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: var(--gold);
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    cursor: pointer;
-}
-
-.modal img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    cursor: default;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.close2 {
-    position: absolute;
-    right: 10px;
-    color: white;
-    top: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
 .more-info {
-    padding: 12px;
-    max-width: 1200px;
+padding:12px;
+max-width:1200px;
+
 }
 
 .more-info p {
-    font-size: 18px;
+font-size:18px;
+}
+.more-info img{
+width:100%;
+max-height:270px;
+object-fit:cover;
+}
+.more-info small{
+color:gray;
+
+}
+.label{  
+font-size:12px;
+color:gray;
 }
 
-.more-info img {
-    width: 100%;
-    max-height: 270px;
-    object-fit: cover;
-}
-
-.more-info small {
-    color: gray;
-}
-
-.label {
-    font-size: 12px;
-    color: gray;
-}
-
-.more-info .contact {
-    margin-top: 10px;
-    font-size: 24px;
+.more-info .contact{ 
+margin-top:10px;
+font-size:24px;
 }
 
 .go-back {
@@ -108,112 +90,256 @@
     bottom: 30px;
     font-size: 42px;
     animation: goUp ease 400ms forwards;
-    background: black;    
+    background:black;    
 }
 
 .rate label {
-    all: unset;
+all:unset;
+
 }
 
 .rate label small {
-    color: gray;
-    font-size: 16px;
+color:gray;
+font-size: 16px;
 }
 
 @keyframes goUp {
-    0% { bottom: 50px; transform: scale(1); }
-    100% { transform: scale(0.7); bottom: 90px; }
+    0% { bottom: 50px; 
+    transform: scale(1);
+    }
+    100% { 
+    transform: scale(0.7);
+    bottom: 90px; }
 }
 
-.text {
-    font-family: inherit;
-    font-weight: light;
-}
+.text{
+font-family:inherit;
+font-weight:light;}
 </style>
 
-<div class="modal" id="modal">
-    <span class="close2" id="close">&times;</span>
-    <img src="/media/{{ post.picture }}" alt="Modal Image" id="modalImage" />
-</div>
 
-<div style="padding: 12px; margin: auto; max-width: 400px; background-color: white; box-shadow: var(--shadow);">
-    <div class="go-back publish" onclick="window.history.back()"><</div>
-    <img class="Hello" style="width: 100%; max-height: 100%; aspect-ratio: 1; object-fit: cover; cursor: pointer;" src="/media/{{ post.picture }}" alt="Post Image">
-    <div style="position: absolute; color: white; width: auto; font-weight: bold; font-size: 32px; top: 12px; right: 12px;">
-        {% if post.price == 0 %}
-            Договор
-        {% else %}
-            {{ post.price|floatformat:0 }} сом
-        {% endif %}
-    </div>
-    <div style="pointer-events: none; color: gray; display: flex; width: 100%; gap: 4px; flex-wrap: wrap; margin-top: 10px; position: absolute; bottom: 0; left: 0; padding: 12px; color: white;">
+
+
+<div 
+style="
+padding:12px;
+margin:auto;
+max-width: 400px;
+background-color: white;
+box-shadow: var(--shadow);
+">
+
+<div class="go-back publish" onclick="window.history.back()"><</div>
+
+        <div 
+        style="
+        border-radius:10px !important;
+        overflow:hidden;
+        position:relative;
+margin-bottom:10px !important;
+        "
+        
+        >
+<!--<div
+style=" position:absolute; color:white; font-weight:bold;
+font-size:24px;
+top:24px;
+right:0;
+
+"
+ class="label">Цена: </div>
+    {% if post.price == 0%}
+    Договор
+    {% else %}
+    {{ post.price }}сом
+
+    {% endif %}
+      </div>        -->
+        <img 
+        class="Hello"
+        style="
+        width: 100%;
+        max-height: 100%;
+        aspect-ratio:1;
+        object-fit: cover;
+        cursor: pointer;
+        outline: none; /* Remove focus outline */
+        border: none; /* Remove any border */
+        box-shadow: none; /* Remove any box shadow */
+        -webkit-appearance: none; /* Remove default webkit styles */
+        user-select: none; /* Prevent text selection */
+         -webkit-tap-highlight-color: transparent; /* Disable default blue highlight */
+    "
+            alt="Click to open modal"
+       
+        src="/media/{{ post.picture }}" alt="Post Image"
+        >
+       <div style="position:absolute; color: white;width:auto;
+font-weight:bold; font-size:32px; top:12px; right:12px;"
+onclick="window.history.back()"
+class="label">
+  {% if post.price == 0 %}
+    Договор
+  {% else %}
+{{ post.price|floatformat:0 }} сом
+  {% endif %}
+</div>
+        <div style="
+pointer-events:none;
+        color:gray;
+        display:flex;
+        width:100%;
+        gap:4px;
+        flex-wrap:wrap;
+        margin-top:10px;
+        position: absolute;
+        bottom:0;left:0;
+padding:12px; color:white
+        ">
         Теги:<br>
         {% for tag in post.tags.all %}
-            <div style="color: white">#{{ tag.name }}</div>
+        <div style="color:white"> 
+         #{{ tag.name }}
+        </div>
+     
         {% endfor %}
+ #X_x
     </div>
-</div>
-
-<div style="margin-top: 10px;">
-    <button class="nobox-button" onclick="navigator.share({ url: window.location.href })">Share X_x</button>      
-    <pre style="white-space: pre-wrap; font-size: 16px;" id="text" class="text">{{ post.description }}</pre>
     
-    <div>
-        <br/>
-        <form style="display: flex; gap: 20px; font-size: 36px; justify-content: center; padding: 20px 0px 40px 0px; text-align: center;" class="rate">
-            <label onclick="alert('Вы поставили лайк!')">😍 <input value="1" edit="false" style="display: none"/><br/><small>28</small></label>
-            <label style="flex: 1;" onclick="alert('Спасибо!')">🙂 <input value="0" edit="false" style="display: none" /><br/><small>21</small></label>
-            <label style="flex: 1;" onclick="alert('Принято...')">😆 <input value="1" edit="false" style="display: none" /><br/><small>10</small></label>
-            <label style="flex: 1;" onclick="alert('Оставь свои контакты, мы свяжемся')">🏚 <input value="1" edit="false" style="display: none" /><br/><small>15</small></label>
-            <label style="flex: 1;" onclick="alert('Пост был отправлен на проверку!')">👨‍💻 <input value="1" edit="false" style="display: none" /><br/><small>5</small></label>
-        </form>
+    
+         </div>
+    
+    <div style="
+    margin-top:10px;  
+">  
 
-        <footer style="all: unset;">
-            <div style="width: 100%; border-radius: 0px 0px 8px 8px;">
-                <div class="label">Опубликовано:</div>
-                {{ post.time_since_posted }}
-                <br/><br/>
-                {% if not post.author.is_staff %}
-                <div class="label">Контакты:</div>
-                <h3> 
-                    <b>+
-                    {% if post.state == "active" %}
-                        {% with post.author.phone_number as number %}
-                            {{ number|slice:":3" }} {{ number|slice:"3:6" }} {{ number|slice:"6:" }}
-                        {% endwith %}
-                    {% else %}
-                        🏚 Объявление уже в архиве...
-                    {% endif %}
-                    {% endif %}
-                    </b>
-                </h3>
-            </div>
-        </footer>
+    
+ <!--   <div style="display:none; opacity:0;"  class="label">Цена: </div>
+    {% if post.price == 0%}
+    Договор
+    {% else %}
+    {{ post.price }}сом
+    
+    {% endif %}
+      </div> -->
+<button class="nobox-button" onclick="navigator.share({ url: window.location.href })">
+  Share X_x <in-Dev>
+</button>      
+    <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
+ {{ post.description }}
+   <!--      <div class="label">Особые примечания:</div> -->
+<!--<b>Уважаемый пользователь Nobox●Kg,</b>
+
+Благодарим вас за участие в проекте и его тестировании. К сожалению, мы вынуждены сообщить, что проект приостановлен и будет отправлен в техническую работу на неопределённое время.
+
+В наших планах — доработать систему монетизации, чтобы вернуться с улучшенной версией.
+
+<b>Статус:</b> Потрачено ● Wasted
+
+Желаем вам удачи в поиске!
+
+С уважением,<br>
+Команда Nobox●Kg
+
+Контакты: info@nobox.kg
+
+-->
+</pre>
+    
+ 
+      <div>
+    <br/>
+    <form style="
+    display:flex;
+    gap:20px;
+    font-size: 36px;
+    justify-content:center;
+    padding: 20px 0px 40px 0px;
+    text-align:center;
+    " class="rate">
+    
+    
+<label onclick="alert('Вы поставили лайк!')"> 😍 <input value="1" edit="false" style="display:none"/><br/>
+<small>28</small>
+</label>
+<label style="flex: 1;" onclick="alert('Спасибо!')"> 🙂 
+    <input value="0" edit="false" style="display: none" /><br/>
+    <small>21</small>
+</label>
+<label style="flex: 1;" onclick="alert('Принято...')"> 😆 
+    <input value="1" edit="false" style="display: none" /><br/>
+    <small>10</small>
+</label>
+<label style="flex: 1;" onclick="alert('Оставь свои контакты, мы свяжемся')"> 🏚 
+    <input value="1" edit="false" style="display: none" /><br/>
+    <small>15</small>
+</label>
+<label style="flex: 1;" onclick="alert('Пост был отправлен на проверку!')"> 👨‍💻 
+    <input value="1" edit="false" style="display: none" /><br/>
+    <small>5</small>
+</label>
     </div>
+    </form>
+
+    <footer style="all: unset;">
+    <div style="
+    width: 100%;
+    /* color: rgba(255,255,255,0.9); */
+    border-radius:0px 0px 8px 8px;" 
+    
+    >
+    
+
+    <div class="label">Опубликовано:</div>
+     {{ post.time_since_posted }}
+    
+ 
+    
+    
+    <br/>
+    <br/>
+    {% if not post.author.is_staff  %}
+    <div class="label">Контакты:</div>
+    <h3> 
+        <b>+
+            {% if post.state == "active" %}
+            {% with post.author.phone_number as number %}
+            {{ number|slice:":3" }} {{ number|slice:"3:6" }} {{ number|slice:"6:" }}
+            {% endwith %}
+            {% else %}
+            🏚 Объявление уже в архиве...
+            {% endif %}
+            {% endif %}
+        </b>
+    </h3>
 </div>
+</footer>
 
-<script>
-window.onload = function () {
-    const openTrigger = document.querySelector(".Hello");
-    const modal = document.getElementById("modal");
-    const closeBtn = document.getElementById("close");
+          <script>
+      window.onload = function () {
+        const openTrigger = document.querySelector(".Hello");
+        const modal = document.getElementById("modal");
+        const closeBtn = document.getElementById("close");
 
-    openTrigger.addEventListener("click", function () {
-        modal.classList.add("active");
-    });
+        openTrigger.addEventListener("click", function () {
+          modal.classList.add("active");
+        });
 
-    function closeModal() {
-        modal.classList.remove("active");
-    }
-
-    modal.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            closeModal();
+        function closeModal() {
+          modal.classList.remove("active");
         }
-    });
 
-    closeBtn.addEventListener("click", closeModal);
-    document.getElementById("modalImage").addEventListener("click", closeModal);
-};
-</script>
+        // Close modal when clicking on background
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        document
+          .getElementById("modalImage")
+          .addEventListener("click", closeModal);
+      };
+    </script>
 {% endblock %}
