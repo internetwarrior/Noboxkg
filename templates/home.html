@@ -464,8 +464,8 @@ font-weight:light;
 
       {% if page_obj.has_previous %}
 
-      <li style="outline:1px solid gray ;color: gray; background: transparent" class=" n-button">
-        <a
+      <li style=" display:inline; outline:1px solid gray ;color: gray; background: transparent" class=" n-button">
+        <a style="display:inline"
           class="page-link"
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}"
           aria-label="Previous"
@@ -481,7 +481,7 @@ font-weight:light;
       {% endif %} {% if page_obj.has_next %}
       <li class=" n-button">
         <a
-          
+          style="display:inline"
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}"
           aria-label="Next"
         >
