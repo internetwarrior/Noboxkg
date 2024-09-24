@@ -460,11 +460,11 @@ font-weight:light;
   <nav id="bottom" class="page-nav" aria-label="Page navigation">
 
 
-    <ul style="flex-direction:row; gap:10px!important;" class="pagination justify-content-center">
+    <ul style="margin:auto;" class="pagination justify-content-center">
 
       {% if page_obj.has_previous %}
 
-      <li style=" display:inline; outline:1px solid gray ;color: gray; background: transparent" class=" n-button">
+      <li style=" display:inline; outline:1px solid gray ;color: gray; background: transparent; margin-right:16px;" class=" n-button">
         <a style="display:inline"
           class="page-link"
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}"
