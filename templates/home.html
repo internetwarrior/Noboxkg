@@ -458,10 +458,13 @@ font-weight:light;
     };
   </script>
   <nav id="bottom" class="page-nav" aria-label="Page navigation">
-    <ul style="flex-direction:row; gap:4px;" class="pagination justify-content-center">
+
+
+    <ul style="flex-direction:row; gap:10px!important;" class="pagination justify-content-center">
 
       {% if page_obj.has_previous %}
-      <li class="theme-button-1 n-button">
+
+      <li style="outline:1px solid gray ;color: gray; background: transparent" class=" n-button">
         <a
           class="page-link"
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.previous_page_number }}{% endwith %}"
@@ -470,11 +473,15 @@ font-weight:light;
           <span aria-hidden="true">&laquo; Предыдущие</span>
         </a>
       </li>
+
+
+
+
 <!--      <div style="font-size: 18px; font-weight: bold">|</div>-->
       {% endif %} {% if page_obj.has_next %}
       <li class="theme-button-right-1 n-button">
         <a
-          class="page-link"
+          class="n-button"
           href="?{% with filter_params as params %}{{ params }}{% if params %}&{% endif %}page={{ page_obj.next_page_number }}{% endwith %}"
           aria-label="Next"
         >
