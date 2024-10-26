@@ -5,16 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Эээ ты куда?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: rgba(0, 0, 0, 1);
+            text-align: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        h1 {
+            margin: auto;
+            z-index: 100;
+            position: fixed;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-<body style="background:rgba(0,0,0,1);text-align:center; color:white;height:100vh;">
-<h1 style="z-index:100;position:fixed;margin-top:30px;">404 -Страница не найдено <br/>
-<a style="color:white;" href="https://www.nobox.kg">На главную</a>
-</h1>
-
-
-<h1 style="z-index:1000;position:fixed;margin-bottom:30px;">
-</h1>
-
-
+<body>
+    <h1>404 - Страница не найдена <br/>
+        <a style="color:white;" href="{% url 'home' %}">На главную</a>
+    </h1>
 </body>
 </html>

@@ -28,19 +28,21 @@ TELEGRAM_BOT_TOKEN = "7244082720:AAFwMyC1iG5yItmaUkrkkA2fs9D0xwaj9v0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+# ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+ALLOWED_HOSTS = ['*']
 
 #ALLOWED_HOSTS = ['no-box.ru','.no-box.ru',]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://nobox.kg',
-    'https://www.nobox.kg',
-    'http://nobox.kg',
-'http://www.nobox.kg',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://nobox.kg',
+#     'https://www.nobox.kg',
+#     'http://nobox.kg',
+# 'http://www.nobox.kg',
+# ]
 
 # Application definition
 
@@ -108,6 +110,8 @@ DATABASES = {
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 # }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

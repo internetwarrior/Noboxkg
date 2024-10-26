@@ -50,10 +50,15 @@ background-color:var(--gold);
 <div class="modal" id="modal">
       <span class="close2" id="close">&times;</span>
       <img
-            src="/media/{{ post.picture }}"
+            src="https://images.unsplash.com/photo-1729779525818-a76a544f252d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D"
             alt="Modal Image"
             id="modalImage"
       />
+       <!-- <img
+            src="/media/{{ post.picture }}"
+            alt="Modal Image"
+            id="modalImage"
+      /> -->
     </div>
 
 <style>
@@ -172,8 +177,27 @@ right:0;
     "
             alt="Click to open modal"
        
-        src="/media/{{ post.picture }}" alt="Post Image"
+        src="https://images.unsplash.com/photo-1729779525818-a76a544f252d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxN3x8fGVufDB8fHx8fA%3D%3D" alt="Post Image"
         >
+        <!-- <img 
+        class="Hello"
+        style="
+        width: 100%;
+        max-height: 100%;
+        aspect-ratio:1;
+        object-fit: cover;
+        cursor: pointer;
+        outline: none; /* Remove focus outline */
+        border: none; /* Remove any border */
+        box-shadow: none; /* Remove any box shadow */
+        -webkit-appearance: none; /* Remove default webkit styles */
+        user-select: none; /* Prevent text selection */
+         -webkit-tap-highlight-color: transparent; /* Disable default blue highlight */
+    "
+            alt="Click to open modal"
+       
+        src="/media/{{ post.picture }}" alt="Post Image"
+        > -->
        <div style="position:absolute; color: white;width:auto;
 font-weight:bold; font-size:32px; top:12px; right:12px;"
 onclick="window.history.back()"
@@ -227,7 +251,8 @@ padding:12px; color:white
 </button>       -->
     <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
 
-{{ post.description|slice:":-26" }}...
+{{ post.description}}
+<!-- {{ post.description|slice:":-26" }}... -->
 
 
    <!--      <div class="label">Особые примечания:</div> -->
