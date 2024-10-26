@@ -222,11 +222,14 @@ padding:12px; color:white
     
     {% endif %}
       </div> -->
-<button class="nobox-button" onclick="navigator.share({ url: window.location.href })">
+<!--<button class="nobox-button" onclick="navigator.share({ url: window.location.href })">
   Share X_x <in-Dev>
-</button>      
+</button>       -->
     <pre style="white-space: pre-wrap; font-size:16px;" id="text" class="text">
- {{ post.description }}
+
+{{ post.description|slice:":-26" }}...
+
+
    <!--      <div class="label">Особые примечания:</div> -->
 <!--<b>Уважаемый пользователь Nobox●Kg,</b>
 

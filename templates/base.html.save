@@ -91,14 +91,14 @@ window.addEventListener('load', function() {
 });
 </script>
 
-<!--
+
 <div id="target" class="scroll-navigator">
-<!---<a href="#top-1">⬆️</a>
+<!---<a href="#top-1">⬆️</a>-->
 <a href="#bottom-1">
 <svg width="48px" height="48px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm0 47L16 33.695h10.857V15h10.285v18.695H48L32 49z" fill="#000"></path></g></svg>
 </a>
 
-</div> -->
+</div>
 
 
      <style>
@@ -106,11 +106,8 @@ window.addEventListener('load', function() {
 
 
       .burger {
-    position:fixed;
-    right:24px;
-    bottom:24px;
     margin:auto;
-    color: black;
+    color: rbga(0,0,0,0.9);
     padding: 4px;
     bottom: 24px;
     right: 24px;
@@ -124,7 +121,7 @@ window.addEventListener('load', function() {
 outline:0.9px solid gray !important;
   margin-top:50px !important;
     width: 56px;
-    background: var(--gold);
+    background: transparent;
     box-shadow: var(--shadow);
           font-size:32px;
           -webkit-tap-highlight-color: transparent !important;
@@ -180,12 +177,45 @@ padding:12px;
 </style>
 
 
-      <div class="burger">
-        <div></div>
-        <div class="font-size:42px;">☰</div>
-        <div class="hey"></div>
+
+
+
+
+
+      <div class="burger"> <div></div> <div 
+        class="font-size:42px;">☰</div> <div 
+        class="hey"></div>
       </div>
 
 
+ 
+<div class="hey3 hidden">
+<div class="sidebar">
+        <div class="hey2">
+            <div class="logo">
+               Menu
+            </div>
+            <ul class="menu">
+                <li><a href=" {% url 'home' %}" class="active"><i class="fas fa-home"></i>Главная страница</a></li>
+                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user"></i>Личный кабинет</a></li>
+                <li><a href="#"><i class="fas fa-bookmark"></i>Сохранённые объявления</a></li>
+                <li><a href="https://t.me/a1ina_bot?start=website"><i class="fas fa-user-plus"></i>Зарегистрироваться</a></li>
+            </ul>
+        </div>
+        <div class="hey2">
+            <ul class="footer-menu">
+                <li><a href="https://t.me/noboxkg"><i class="fas fa-newspaper"></i>Новости</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i>Пользовательское соглашение</a></li>
+                <li><a href="https://t.me/noboxrules"><i class="fas fa-info-circle"></i>Правила проекта</a></li>
+            </ul>
+            <div class="contact-info">
+                <p>Bishkek 2023-2024</p>
+                <p>info@nobox.kg</p>
+                <p>All rights reserved</p>
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

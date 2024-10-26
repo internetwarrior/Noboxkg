@@ -24,17 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c_o^(3ey)xg83hqm7gq1kzied0pmc8iy@bmu#_ay-4-jijf3i#'
 
-TELEGRAM_BOT_TOKEN = "7512727925:AAHPb71kWaPUr9X8NAM7h3o1FAaEUkhNQc8"
-
+TELEGRAM_BOT_TOKEN = "7244082720:AAFwMyC1iG5yItmaUkrkkA2fs9D0xwaj9v0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 
 
-#ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['no-box.ru','.no-box.ru',]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://nobox.kg',

@@ -64,7 +64,7 @@ async def lobby(user_id):
     await bot.send_message(user_id,
     "Добро пожаловать в Nobox!\n"
     "Ищем квартиру? Или что-то размещаешь? 😏\n\n"
-    "Наш телеграм Группа: @renting_kg\n\n"
+    "Наш телеграм: @NoboxNews\n\n"
     "📑 Объявлений пока: 0\n"
     "👩‍💻 На проверке: 0\n"
     "💫 Просмотров всего: 0",
@@ -76,11 +76,11 @@ def user_exists(user_id):
 
 
 
-@dp.message_handler(commands=['start'])
+@dp.message_handler(commands=['start2'])
 async def start(message: types.Message):
     await message.answer("Я снова тут! 🙋‍♀️\nЯ на все внимание 😄\n\nДобро пожаловать в Nobox!\nИщем квартиру? Или что-то размещаешь? 😏\n\nОтправь:\nцена/описание/контакты/\nфотку с хештегом #nobox\n\nИ модераторы проверят и загрузят на сайт\n\nВот сюда: @renting_kg")
 
-@dp.message_handler(commands=['labron'])
+@dp.message_handler(commands=['start'])
 async def start_registration(message: types.Message):
     user_id = message.from_user.id
     global user_posts
