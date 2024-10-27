@@ -37,11 +37,11 @@ ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
 
 #ALLOWED_HOSTS = ['no-box.ru','.no-box.ru',]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://nobox.kg',
-    'https://www.nobox.kg',
-]
-
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://nobox.kg',
+#     'https://www.nobox.kg',
+# ]
+    
 
 # Application definition
 
