@@ -27,16 +27,16 @@ SECRET_KEY = 'django-insecure-c_o^(3ey)xg83hqm7gq1kzied0pmc8iy@bmu#_ay-4-jijf3i#
 TELEGRAM_BOT_TOKEN = "7244082720:AAFwMyC1iG5yItmaUkrkkA2fs9D0xwaj9v0"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 
 
-#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']
 
 #ALLOWED_HOSTS = ['no-box.ru','.no-box.ru',]
 
-ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+# ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
 CSRF_TRUSTED_ORIGINS = [
     'https://nobox.kg',
     'https://www.nobox.kg',
@@ -91,26 +91,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Noboxkg',
-        'USER': 'nobox',
-        'PASSWORD': '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',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Noboxkg',
+#         'USER': 'nobox',
+#         'PASSWORD': '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',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
+}
 
 
 # Password validation
