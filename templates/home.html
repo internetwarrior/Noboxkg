@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block title %} Найти квартиру Бишкек{% endblock %}
 {% block content %}
 
+{% load static %}
 
 
 
@@ -348,10 +349,11 @@ font-weight:light;
       <div class="parent">
         <div class="box div1">
           <div style="position: relative">
-            <img
-              src="https://nobox.kg/static/profile_icon.jpg"
-              alt=""
-            />
+            <img 
+  src="{% static 'profile_icon.jpg' %}" 
+  alt=""
+/>
+
             <div
               style="
                 position: absolute;
