@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c_o^(3ey)xg83hqm7gq1kzied0pmc8iy@bmu#_ay-4-jijf3i#'
 
-TELEGRAM_BOT_TOKEN = "7244082720:AAFwMyC1iG5yItmaUkrkkA2fs9D0xwaj9v0"
+TELEGRAM_BOT_TOKEN = "7244082720:AAElOONoIzlfck2jGy4TaYoPCljHvkNeAaY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'post.apps.PostConfig',
     'api','rest_framework',
+    
 
 ]
 
