@@ -271,6 +271,17 @@ document.addEventListener("DOMContentLoaded", function () {
         >
 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="noboxbot" data-size="large" data-auth-url="/" data-request-access="write"></script>     
 </div>
+<!-- here_put -->
+
+<ul style="list-style-type: none; padding: 0; margin: 0">
+  <li>
+     <a href="https://news.nobox.kg" style="text-decoration: none; color: black"
+       >Новости</a
+     >
+   </li>
+ </ul>
+
+
       </nav>
 <div style="height:100%; position:relative;">
 <nav style="position:absolute;top:50%;left:-32px;">
@@ -282,25 +293,20 @@ document.addEventListener("DOMContentLoaded", function () {
       <footer style="display: flex; flex-direction: column; padding: 20px">
         <nav style="margin-bottom: 15px">
           <ul style="list-style-type: none; padding: 0; margin: 0">
-           <li>
-              <a href="https://news.nobox.kg" style="text-decoration: none; color: black"
-                >Новости</a
-              >
-            </li>
-            <li>
-              <a
-                href="/privacy"
-                style="text-decoration: none; color: black"
-                >Политика Конфиденциальности</a
-              >
-            </li>
-            <li>
-              <a href="https://t.me/noboxlobby" style="text-decoration: none; color: black"
-                >Правила проекта</a
-              >
-            </li>
+              <li>
+                  <a href="{% url 'about' %}" style="text-decoration: none; color: black">About Us</a>
+              </li>
+              <li>
+                  <a href="{% url 'privacy_policy' %}" style="text-decoration: none; color: black">Privacy Policy</a>
+              </li>
+              <li>
+                  <a href="{% url 'terms' %}" style="text-decoration: none; color: black">Terms & Conditions</a>
+              </li>
+              <li>
+                  <a href="{% url 'contact' %}" style="text-decoration: none; color: black">Contact Us</a>
+              </li>
           </ul>
-        </nav>
+      </nav>      
         <small style="color: black; opacity: 0.5">Bishkek 2023-2024</small>
         <small style="color: black; opacity: 0.5"
           >Email:
