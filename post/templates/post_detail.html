@@ -6,7 +6,7 @@
 
 
 
-<div class="close-button" style=" position: fixed; margin: 20px; text-align: center; z-index: 9999;
+<div class="close-button" style=" position: fixed; margin: 16px; text-align: center; z-index: 9999;
 
 ">
   <svg
@@ -21,6 +21,49 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
   </svg>
 </div>
+
+<div class="like-button" style="position: fixed; margin: 16px; margin-left: 100px; text-align: center; z-index: 9999;">
+    <svg
+        onclick="toggleLike('{{ post.id }}')"
+        id="like-icon-{{ post.id }}"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        style="padding: 10px; border-radius: 100px; background-color: rgb(47, 47, 47); width: 40px; height: 40px; cursor: pointer; color: #ffffff;"
+    >
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21.35z"/>
+    </svg>
+</div>
+
+<script>
+    function toggleLike(postId) {
+        let likedItems = JSON.parse(localStorage.getItem("likedItems")) || [];
+
+        if (likedItems.includes(postId)) {
+            likedItems = likedItems.filter(item => item !== postId);
+            document.getElementById("like-icon-" + postId).style.color = "#ffffff";
+        } else {
+            likedItems.push(postId);
+            document.getElementById("like-icon-" + postId).style.color = "#ff4d4d";
+        }
+
+        localStorage.setItem("likedItems", JSON.stringify(likedItems));
+    }
+
+    (function checkLikedStatus() {
+        let likedItems = JSON.parse(localStorage.getItem("likedItems")) || [];
+        const postId = "{{ post.id }}";
+
+        if (likedItems.includes(postId)) {
+            document.getElementById("like-icon-" + postId).style.color = "#ff4d4d";
+        }
+    })();
+</script>
+
+
+  
 
 <div
     style="display: none; align-items: center; justify-content: center; position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 9999;"
@@ -97,7 +140,8 @@
             {% endfor %}
         </div>
         <div style="margin-top: 10px;  padding:0px 20px;">
-            <pre style="font-size: 18px;" class="text">{{ post.description }}</pre>
+            <small style="color: gray;">Особые премечания</small>
+            <pre style="font-size: 16px;" class="text">{{ post.description }}</pre>
         </div>
 
         <footer style="padding:20px;">
@@ -169,6 +213,12 @@
     bottom: 70px;
     transform: scale(0.8)
   }
+
+  .like-button{
+    right: 20px;
+    top: 20px;
+    /* transform: scale(0.8) */
+  }
   }
 
 
@@ -180,6 +230,7 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    /* font-size: 14px; */
 }
 
 

@@ -62,24 +62,27 @@ def post_detail(request, pk):
 
 def home_view(request):
     tags = Tag.objects.all()
-    tag_ids = request.GET.getlist('filter')
+    post_ids = request.GET.get('posts')
 
-    if tag_ids:
-        tag_ids = [int(tag_id) for tag_id in tag_ids]
-        posts = Post.objects.filter(state__in=["active", "archived"])
-        for tag_id in tag_ids:
-            posts = posts.filter(tags__id=tag_id)
-        posts = posts.distinct()
+    if post_ids:
+        post_ids = [int(post_id) for post_id in post_ids.split("_") if post_id.isdigit()]
+        posts = Post.objects.filter(id__in=post_ids, state__in=["active", "archived"])
     else:
+        tag_ids = request.GET.getlist('filter')
         posts = Post.objects.filter(state__in=["active", "archived"])
+
+        if tag_ids:
+            tag_ids = [int(tag_id) for tag_id in tag_ids]
+            for tag_id in tag_ids:
+                posts = posts.filter(tags__id=tag_id)
+            posts = posts.distinct()
 
     paginator = Paginator(posts, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     query_params = request.GET.dict()
-    if 'page' in query_params:
-        del query_params['page']
+    query_params.pop('page', None)
 
     context = {
         'posts': page_obj.object_list,

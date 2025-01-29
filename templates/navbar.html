@@ -272,13 +272,49 @@ document.addEventListener("DOMContentLoaded", function () {
 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="noboxbot" data-size="large" data-auth-url="/" data-request-access="write"></script>     
 </div>
 <!-- here_put -->
-
+<style>
+  ul li {
+    padding: 10px;
+  }
+  nav{
+    width: 100%;
+  }
+</style>
 <ul style="list-style-type: none; padding: 0; margin: 0">
   <li>
-     <a href="https://news.nobox.kg" style="text-decoration: none; color: black"
+     <a href="https://t.me/nobox_kg" style="text-decoration: none; color: black"
        >Новости</a
      >
    </li>
+
+   <li>
+      
+    <a target="_blank" href="https://t.me/NoboxSupport" style="all: unset; display: block; padding: 10px; background-color: rgb(47, 47, 47); color: white; border: none; cursor: pointer; border-radius: 0px; width: 100%;">
+
+      👨‍💻 Подать Объявление
+  </a>
+</li>
+
+   <li>
+
+     <button onclick="openLikedPosts()" style="all: unset; padding: 10px; background-color: rgb(47, 47, 47); color: white; border: none; cursor: pointer; border-radius: 0px; width: 100%;">
+      ❤️ Лайкнутые посты
+      </button>
+    </li>
+    
+
+<script>
+  function openLikedPosts() {
+      let likedItems = JSON.parse(localStorage.getItem("likedItems")) || [];
+      if (likedItems.length > 0) {
+          let queryString = "?posts=" + likedItems.join("_");
+          window.location.href = "/" + queryString;  // Always redirects to "/"
+      } else {
+          alert("Woops... Вы не лайкали постов :,(");
+      }
+  }
+</script>
+
  </ul>
 
 
