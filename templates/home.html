@@ -316,8 +316,42 @@ font-weight:light;
     </div>
   </div>
 </form>
+
 <div class="container">
-  <div class="row">    <div class="listing-grid">
+  
+  <div class="row">  
+    <div style="padding: 20px 20px; grid-row: 1/-1 ; width: 100%; display: flex; align-items: center;justify-content: center; gap: 20px;">
+      <a id="nav-link" style="all: unset; padding:10px; cursor: pointer;" href="/">Лента</a>
+      <button id="liked-btn" onclick="openLikedPosts()" style="all: unset; padding: 10px; cursor: pointer;">Лайнутые</button>
+
+      <script>
+        function updateLikedCount() {
+            const likedItems = JSON.parse(localStorage.getItem("likedItems")) || [];
+            document.getElementById("liked-btn").textContent = `Лайнутые (${likedItems.length})`;
+        }
+      
+        updateLikedCount(); // Call function on page load
+      </script>
+            
+      <script>
+        // Underline the link if the current path is "/"
+
+      
+        // Check if "posts" query exists in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("posts")) {
+            // document.getElementById("liked-btn").style.fontWeight = "bold"; // Example: Make text bold
+            document.getElementById("liked-btn").style.textDecoration = "underline"; // Example: Add underline
+        }
+        else{
+            document.getElementById("nav-link").style.textDecoration = "underline";
+        }
+      </script>
+      
+    </div>
+    
+    <div class="listing-grid">
+  
 <!--  <img
     style="
       position: fixed;
