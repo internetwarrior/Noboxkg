@@ -1,10 +1,50 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ post.name }}{% endblock %}
+{% block title %} Пост - {{post.id }}{% endblock %}
 
 {% block content %}
 
-
+<style>
+    @media (max-width: 768px) {
+      .mobile {
+        flex-direction: column;
+      }
+  
+      .mobile > div {
+        width: 100%;
+        height: 100%;
+      }
+      .close-button{
+      right: 8px;
+      bottom: 70px;
+      transform: scale(0.8)
+    }
+  
+    .like-button{
+      right: 20px;
+      top: 20px;
+      transform: scale(0.8)
+    }
+    .detail-img{
+        max-height: 400px;
+    }
+    }
+  
+  
+  
+  /* *{
+      outline: 1px greenyellow solid;
+  } */
+  pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      /* font-size: 14px; */
+  }
+  
+  
+  
+  </style>
 
 <div class="close-button" style=" position: fixed; margin: 16px; text-align: center; z-index: 9999;
 
@@ -81,7 +121,7 @@
 
 <div class="mobile" style="display: flex; background-color: white; min-height: 100vh; height: 100%;">
     <div id="openModalTrigger" style="overflow: hidden; position: relative; flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;background-color: rgba(0, 0, 0, 0.8);">
-        <div style="
+        <div class="detail-img" style="
           width: 100%;
           height: 100%;
           background-color: rgba(0, 0, 0, 0.844);
@@ -97,7 +137,7 @@
           src="/media/{{ post.picture }}"
           
           style=" width: 100%; 
-          margin: auto; 
+          /* margin: auto;  */
           object-fit: cover; 
           cursor: pointer;
          
@@ -150,7 +190,7 @@
                 {{ post.time_since_posted }}
                 <br /><br />
                 {% if not post.author.is_staff %}
-                    <div class="label">Контакты:</div>
+                    <div class="label">Контакты Nobox.kg:</div>
                     <h3>
                         <b>+
                             {% if post.state == "active" %}
@@ -198,44 +238,7 @@
        </div>
     </div>
 </div>
-<style>
-  @media (max-width: 768px) {
-    .mobile {
-      flex-direction: column;
-    }
 
-    .mobile > div {
-      width: 100%;
-      height: 100%;
-    }
-    .close-button{
-    right: 8px;
-    bottom: 70px;
-    transform: scale(0.8)
-  }
-
-  .like-button{
-    right: 20px;
-    top: 20px;
-    transform: scale(0.8)
-  }
-  }
-
-
-
-/* *{
-    outline: 1px greenyellow solid;
-} */
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    /* font-size: 14px; */
-}
-
-
-
-</style>
 <script>
     window.onload = function () {
         const openTrigger = document.getElementById("openModalTrigger");
