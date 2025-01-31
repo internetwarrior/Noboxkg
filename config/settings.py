@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-c_o^(3ey)xg83hqm7gq1kzied0pmc8iy@bmu#_ay-4-jijf3i#
 TELEGRAM_BOT_TOKEN = "7244082720:AAEly302NKdYFS9E3RSa6m82T0QEaPYGgGY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBZUG = False
+DEBUG = False
 # DEBUG = True
 
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'corsheaders',
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'post.apps.PostConfig',
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -78,7 +80,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'build'),
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +138,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -151,7 +160,10 @@ AUTH_USER_MODEL = 'user.CustomUser'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticfiles"),
+    os.path.join(BASE_DIR, 'build/static'),
+]
 
 
 MEDIA_URL = '/media/'

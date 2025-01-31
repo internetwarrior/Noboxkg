@@ -1,11 +1,15 @@
-from django.shortcuts import render
+from rest_framework import viewsets, serializers
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from post.models import Post
 
-# Create your views here.
-# myapp/views.py
-from django.http import JsonResponse
-data =[]
+class PostSerializer(serializers.ModelSerializer):
+    tags = serializers.StringRelatedField(many=True)
 
+    class Meta:
+        model = Post
+        fields = '__all__'
 
-
-def tuk_tuk_view(request):
-    return JsonResponse(data, safe=False)
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]

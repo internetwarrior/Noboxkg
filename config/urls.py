@@ -3,9 +3,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-
+from .views import react_app
 urlpatterns = [
-    # path('superman/', admin.site.urls),
+    path('superman/', admin.site.urls),
+    path('noknok/', react_app),
     path('', include('user.urls')),
     path('', include('post.urls')),
     path('api_v1/', include('api.urls')),
