@@ -28,15 +28,10 @@ TELEGRAM_BOT_TOKEN = "7244082720:AAEly302NKdYFS9E3RSa6m82T0QEaPYGgGY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-# DEBUG = True
+DEBUG = True
 
 
-
-# ALLOWED_HOSTS = ['*']
-
-#ALLOWED_HOSTS = ['no-box.ru','.no-box.ru',]
-
-ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg']
+ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg','no-box.ru','.no-box.ru',]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://nobox.kg',
@@ -65,7 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-"whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -111,12 +106,14 @@ DATABASES = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#       'NAME': BASE_DIR / 'db.sqlite3',
-#   }
-# }
+if DEBUG:
+    DATABASES = {
+  'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
+  }
+}
+    ALLOWED_HOSTS = ['*']
 
 
 # Password validation
