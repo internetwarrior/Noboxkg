@@ -28,7 +28,7 @@ TELEGRAM_BOT_TOKEN = "7244082720:AAEly302NKdYFS9E3RSa6m82T0QEaPYGgGY"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-DEBUG = True
+# DEBUG = True
 
 
 ALLOWED_HOSTS = ['nobox.kg', 'www.nobox.kg', '.nobox.kg','no-box.ru','.no-box.ru',]
