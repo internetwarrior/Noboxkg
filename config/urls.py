@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 from .views import react_app
 urlpatterns = [
     path('superman/', admin.site.urls),
-    path('noknok/', react_app),
+    path('noknok/', react_app, name='noknok'),
     path('', include('user.urls')),
     path('', include('post.urls')),
     path('api_v1/', include('api.urls')),
