@@ -269,7 +269,22 @@ document.addEventListener("DOMContentLoaded", function () {
             font-size: 18px;
           "
         >
-<script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="noboxbot" data-size="large" data-auth-url="/" data-request-access="write"></script>     
+<!-- <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="noboxbot" data-size="large" data-auth-url="/auth/telegram" data-request-access="write"></script>      -->
+{% if user.is_authenticated %}
+  <p>Вы вошли как, {{ user.username }}</p>
+  <form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button style="all: unset; text-decoration: underline; cursor: pointer;" type="submit">(выйти)</button>
+  </form>
+{% else %}
+  <script async src="https://telegram.org/js/telegram-widget.js?22" 
+          data-telegram-login="noboxbot" 
+          data-size="large" 
+          data-auth-url="https://8da6-92-62-69-244.ngrok-free.app/auth/complete/telegram/" 
+          data-request-access="write"></script>
+{% endif %}
+
+
 </div>
 <!-- here_put -->
 <style>

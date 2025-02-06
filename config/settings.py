@@ -38,6 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.nobox.kg',
     'http://nobox.kg',
     'http://www.nobox.kg',
+    #  'http://8da6-92-62-69-244.ngrok-free.app',  # Add http version if needed
+    # 'https://8da6-92-62-69-244.ngrok-free.app',  # Add https version
 ]
 
 
@@ -54,6 +56,9 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'post.apps.PostConfig',
     'api','rest_framework',
+     'oauth2_provider',
+    'social_django',
+    'drf_social_oauth2',
     
 
 ]
@@ -69,7 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -85,6 +90,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                 'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -118,6 +125,23 @@ if DEBUG:
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.telegram.TelegramAuth',
+    'drf_social_oauth2.backends.DjangoOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'drf_social_oauth2.authentication.SocialAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -174,3 +198,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 handler404 = 'myapp.views.custom_404_view'
+
+
+
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '7554987753:AAFVh79bHv1e-5630OLvdiwlDUAHL0PaA5o'
