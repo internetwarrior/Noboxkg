@@ -368,9 +368,9 @@ font-weight:light;
   />
 -->
       {% for post in posts %}
-      <a href="{% url 'post_detail' post.id %}" class="theme-1 listing">
+      <div  class="theme-1 listing">
 
-      <div class="slider">
+      <a href="{% url 'post_detail' post.id %}" class="slider">
     <div style="position:relative"  class="slide">
     
           <img style="margin:0px !important; border-radius:10px !important;"  src="/media/{{ post.picture }}" alt="Room" />
@@ -449,8 +449,17 @@ font-weight:light;
         {% endif %}
 
 </div>
-</div>
 </a>
+
+{% if user.is_premium %}
+    <button style="font-family: 'Noto Color Emoji', sans-serif !important; z-index: 1000; all: unset; cursor: pointer; background: #000000; padding: 10px 20px; border-radius: 10px; background-color: var(--gold); color: black;  margin-left: auto; margin-top: 10px;" 
+        onclick=" window.location.href='tel:+996700000000';">
+        ↑ Позвонить 📞
+    </button>
+{% endif %}
+
+</div>
+
   {% endfor %}
   <!-- Your post display logic here -->
   <script>

@@ -38,8 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.nobox.kg',
     'http://nobox.kg',
     'http://www.nobox.kg',
-    #  'http://8da6-92-62-69-244.ngrok-free.app',  # Add http version if needed
-    # 'https://8da6-92-62-69-244.ngrok-free.app',  # Add https version
+     'http://8da6-92-62-69-244.ngrok-free.app',  # Add http version if needed
+    'https://8da6-92-62-69-244.ngrok-free.app',  # Add https version
 ]
 
 

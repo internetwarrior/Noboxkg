@@ -11,6 +11,8 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, unique=False, verbose_name="Номер телефона",default='default_value',)
     user_permissions = models.ManyToManyField(Permission, related_name='customuser_permissions_set')
     telegram_profile = models.OneToOneField('TelegramProfile', on_delete=models.CASCADE, null=True, blank=True)
+    is_premium = models.BooleanField(default=False, verbose_name="Premium Status", help_text="Indicates whether the user has a premium subscription")
+    premium_started = models.DateTimeField(null=True, blank=True, help_text="The date and time when the premium subscription started")
 
 
 

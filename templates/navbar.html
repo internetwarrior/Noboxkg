@@ -271,17 +271,26 @@ document.addEventListener("DOMContentLoaded", function () {
         >
 <!-- <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="noboxbot" data-size="large" data-auth-url="/auth/telegram" data-request-access="write"></script>      -->
 {% if user.is_authenticated %}
-  <p>Вы вошли как, {{ user.username }}</p>
+{% if user.is_premium%}
+<img src="https://cdn-icons-png.flaticon.com/512/6941/6941697.png" style="width: 100%; height: 100%; max-width: 40px;" alt="">
+{% endif %}
+  <p style="{% if user.is_premium%}color:#FFB743;{%endif%}">Вы вошли как, {{ user.username }}</p>
   <form method="POST" action="{% url 'logout' %}">
     {% csrf_token %}
-    <button style="all: unset; text-decoration: underline; cursor: pointer;" type="submit">(выйти)</button>
+    <button style="all: unset; text-decoration: underline; cursor: pointer; " type="submit">(выйти)</button>
   </form>
 {% else %}
   <script async src="https://telegram.org/js/telegram-widget.js?22" 
           data-telegram-login="noboxbot" 
           data-size="large" 
           data-auth-url="https://nobox.kg/auth/complete/telegram/" 
-          data-request-access="write"></script>
+          data-request-access="write"></script> 
+          
+          <!-- <script async src="https://telegram.org/js/telegram-widget.js?22" 
+          data-telegram-login="noboxbot" 
+          data-size="large" 
+          data-auth-url="https://8da6-92-62-69-244.ngrok-free.app/auth/complete/telegram/" 
+          data-request-access="write"></script> -->
 {% endif %}
 
 
