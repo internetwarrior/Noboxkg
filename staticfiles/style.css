@@ -23,6 +23,7 @@ all:unset;}
   --gray-darker: #888;
   --gold: #ffd646;
   --gold-hover: #ffc700;
+  --valentine: #FF002B;
   --border-color: #ccc;
   --link-color: #007bff;
   --shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
@@ -99,6 +100,8 @@ right: 0;
 .n-button{
                all:unset;
                background:#ffd646;
+               background: var(--valentine);
+               color: white;
                display:flex;
                padding:5px 10px;
                align-items:center;
