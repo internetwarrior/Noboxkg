@@ -100,7 +100,6 @@ right: 0;
 .n-button{
                all:unset;
                background:#ffd646;
-               background: var(--valentine) !important;
                color: white;
                display:flex;
                padding:5px 10px;
